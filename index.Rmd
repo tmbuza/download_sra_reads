@@ -1,8 +1,8 @@
 ---
-title:  "<big><u>IMAP-PART{NO}</u></big><br><br>Title Goes Here<br><br>"
+title:  "<big><u>IMAP-SRA-READS</u></big><br><br>Downloading Next Generation Sequencing Reads from SRA Archive<br><br>"
 subtitle: |
-  | ![](images/placeholder.png)<br>
-  | Integrated Microbiome Analysis Pipelines<br>( IMAP-PART{NO} ) <br><br><small>[Latest GitHub-Repo](https://github.com/tmbuza/{name}/)</small>
+  | ![](images/funnels.png)<br>
+  | Integrated Microbiome Analysis Pipelines<br>( IMAP-SRA-READS ) <br><br><small>[Latest GitHub-Repo](https://github.com/tmbuza/{name}/)</small>
 date: |
   |  Updated on `r Sys.Date()`
 author: Teresia Mrema-Buza
@@ -18,7 +18,7 @@ mainfont:
 biblio-style: apalike
 email_address: "tmbuza@complexdatainsights.com"
 github_repo: "https://github.com/tmbuza/{name}"
-related_website: "https://complexdatainsights.com/microbiome-analysis/imap-part{NO}"
+related_website: "https://complexdatainsights.com/microbiome-analysis/imap-sra-reads"
 description: |
   This repo provides integrated and highly curated solutions for reproducible research.
 ---
@@ -50,52 +50,52 @@ library(schtools)
 
 ```
 
+
 <br><div id="inprogress"><h3> ...Work In Progress!... </h3> </div><br><br>
 
 > We continuously review and integrate the old iMAP [@TMBuza2019] with Snakemake and GitHub actions to facilitate reproducible microbiome data analysis!
-
 <br><hr width=100%><br>
 
-# General Overview
+# Project Overview
 
-- We use the snakemake workflow management system [@Koster2021; @Snakemake2023] for:
-  - Maintaining reproducibility in technical validation and regeneration of results.
-  - Creating scalable data analysis scaled to server, grid or cloud environment.
-  - Fostering sustainable improvement of the microbiome data analysis.
-- We also review existing workflows [@Snakemake2023; @Mothursnakemake] to help in gaining a better insights for improving microbiome data analysis.
-- We break any complex workflows into small contiguous but related chunks where each major step form a separate executable snakemake rule.
+##  Basic structure
+```{bash include=FALSE}
+bash workflow/scripts/rules_dag.sh
+```
 
-<br>
-
-> We envision to keep fostering on continuous integration and development of highly reproducible workflows.
-
-<br>
-
-## Snakemake rule DAG
-- Typically the snakemake workflow is defined by specifying rules.
-- The rule-graph graphically shows the input-output files. 
-- The snakemake is capable of automatically determining the dependencies between the rules and creates a dot-like DAG (Directed Acyclic Graph).
+<img src="dags/basic_rulegraph.svg">Basic structure
 
 <br><br>
-<img src="dags/rulegraph.svg">IMAP-PART3: Snakemake workflow
+
+## Current project tree
+```bash
+bash workflow/scripts/tree.sh
+```
+
+```{bash include=FALSE}
+bash workflow/scripts/tree.sh
+```
+
+```{bash}
+cat images/project_tree.txt
+```
 
 <br><br>
 
 ## Screenshot of Snakemake HTML report {#smkreport}
 > The snakemake html report can be viewed using any compartible browser, such as chrome to explore more on the workflow and the associated statistics. You will be able to close the left bar to get a better wider view of the display.
+```{bash include=FALSE}
+snakemake --report report.html
+bash workflow/scripts/smk_html_report.sh
+```
 
 <img src="images/smkreport/screenshot.png">
 
-<br><br><hr width=100%><br><br>
 
-# Main Subjects Starts here
-
-
-<br><br>
-
+<br><br><hr width=50%><br><br>
 
 ```{block, echo=TRUE}
-## Related work
+# Related work
 > Here we show the IMAP Repos integrated with Snakemake and GitHub Actions!
 
 | Repo | Description | Summary |
@@ -105,6 +105,7 @@ library(schtools)
 | [IMAP-PART3](https://github.com/tmbuza/imap-data-preprocessing/) | Microbiome Data Preprocessing | [..In Progress..](https://tmbuza.github.io/imap-data-preprocessing/) |
 | [IMAP-PART4](https://github.com/tmbuza/imap-exploratory-analysis/) | Exploratory Analysis of Microbiome Data | [..In Progress..](https://tmbuza.github.io/imap-exploratory-analysis/) |
 | [IMAP-PART5](https://tmbuza.github.io/imap-machine-learning/) | Microbiome Machine Learning | [..In Progress..](https://tmbuza.github.io/imap-machine-learning/) |
+```
 
 <br>
 
@@ -118,7 +119,7 @@ library(schtools)
   > Please, help to increase awareness of freely available microbiome data analysis tools.
   Current [iMAP manuscript dimensions](https://badge.dimensions.ai/details/id/pub.1117740326)
 
-<br><br><hr width=50%><br><br>
+<br><br>
 
 # Appendix {-}
 
@@ -142,6 +143,7 @@ library(schtools)
 :::
 
 <br><br><hr width=100%><br>
+
 
 <div id="footer">
 Last updated on `r format(Sys.time(), '%B %d, %Y')`. <br><br>
