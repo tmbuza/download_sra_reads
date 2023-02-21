@@ -1,4 +1,4 @@
-# GET-SRA: Downloading Next Generation Sequencing Reads from SRA
+# IMAP-SRA-READS: Downloading Next Generation Sequencing Reads from SRA
 
 
 ---In Progress---
