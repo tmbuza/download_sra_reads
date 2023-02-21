@@ -1,4 +1,4 @@
-# IMAP-PART{NO}: Title Goes Here
+# GET-SRA: Downloading Next Generation Sequencing Reads from SRA
 
 
 ---In Progress---
