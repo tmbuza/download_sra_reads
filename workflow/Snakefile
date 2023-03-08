@@ -9,8 +9,111 @@ configfile: "config/config.yaml"
 # Master rule for controlling workflow.
 rule all:
 	input:
+        "data/reads/{sample}_{sraNum}.fastq",    
 		"index.html",
-        "docs/env_spec_file.txt",
+
+
+# Dowload the SRA RUN reads
+rule download_sra_reads: 
+    input:
+        sra_acc=rules.extract_accessions.output.sra_acc,
+    output:
+        "data/reads/{sample}_{sraNum}.fastq",
+    params:
+        outdir=OUTDIR,
+        temp=TEMP,
+    threads: 1
+    shell:
+        """
+        fasterq-dump \
+        --split-3 --force \
+        --skip-technical {wildcards.sample} \
+        --outdir {params.outdir} \
+        --temp {params.temp} \
+        --threads {threads}
+        """
+
+# # # Subset a test data
+# # rule seqkit_subset_fastq:
+# #     input:
+# #         expand("data/reads/{accession}_1.fastq", accession=ACCESSIONS),
+# #         expand("data/reads/{accession}_2.fastq", accession=ACCESSIONS),
+# #     output:
+# #         "data/test/{accession}_1_sub.fastq",
+# #         "data/test/{accession}_2_sub.fastq",
+# #     threads: 1
+# #     shell:
+# #         """
+# #         bash workflow/scripts/subset_fastq.sh
+# #         """
+
+
+# # rule seqkit_simple_stats:
+# #     input:
+# #         script="workflow/scripts/seqkit_stat_1.sh",
+# #         rawreads=expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
+# #     output:
+# #         seqkit1="results/stats1/seqkit_stats.txt",
+# #     threads: 1
+# #     shell:
+# #       "bash {input.script}"
+
+
+# # rule mothur_mapping_file:
+# #     input:
+# #         stats1="results/stats1/seqkit_stats.txt"
+# #     output:
+# #         files="data/metadata/mothur_mapping_file.tsv",
+# #     threads: 1
+# #     script:
+# #       "scripts/mothur_mapping_file.R"
+
+
+# # rule mothur_design_file:
+# #     input:
+# #         files="data/metadata/mothur_mapping_file.tsv",
+# #     output:
+# #         files="data/metadata/mothur_design_file.tsv",
+# #     threads: 1
+# #     script:
+# #       "scripts/mothur_design_file.R"
+
+# # # Downloading and formatting SILVA and RDP reference databases. The v4 region is extracted from 
+# # # SILVA database for use as reference alignment.
+# # rule mothur_references:
+# # 	input:
+# # 		script="workflow/scripts/mothurReferences.sh"
+# # 	output:
+# # 		silvaV4="data/mothur/references/silva.v4.align",
+# # 		rdpFasta="data/mothur/references/trainset16_022016.pds.fasta",
+# # 		rdpTax="data/mothur/references/trainset16_022016.pds.tax"
+# # 	conda:
+# # 		"envs/mothur.yaml"
+# # 	shell:
+# # 		"bash {input.script}"
+
+
+# # # Downloading the Zymo mock sequence files and extracting v4 region for error estimation.
+# # rule mothur_zymo_mock:
+# # 	input:
+# # 		script="workflow/scripts/mothurMock.sh",
+# # 		silvaV4="data/mothur/references/silva.v4.align",
+# # 	output:
+# # 		mockV4="data/mothur/references/zymo.mock.16S.v4.fasta"
+# # 	conda:
+# # 		"envs/mothur.yaml"
+# # 	shell:
+# # 		"bash {input.script}"
+
+
+# # rule gather_bioinfo_resources:
+# #     shell:
+# #         """
+# #         bash workflow/scripts/get_bioinfo_resources.sh
+# #         """
+
+
+
 
 # # Get dot rule graphs
 # rule dot_rules_graph:

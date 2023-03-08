@@ -1,5 +1,12 @@
+name: sradb
 channels:
   - conda-forge
-  - R
+  - bioconda
 dependencies:
-  - r-tidyverse =1.3.2
+  - snakemake =7.19.1
+  - snakemake-minimal =7.19.1
+  - snakedeploy =0.8.6
+  - sra-tools
+  - entrez-direct
+  - pysradb
+
