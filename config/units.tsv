@@ -1,0 +1,134 @@
+sample_name	animal	Host
+SRR10245277	Wildebeest_3	Connochaetes taurinus
+SRR10245278	Pig_1	Suidae
+SRR10245279	Eland_1	Tragelaphus oryx
+SRR10245280	Gazelle_2	Gazella
+SRR10245281	Dikdik_22	Madoqua
+SRR10245282	Zebra_5	Equus burchellii quagga
+SRR10245283	Buffalo_4	Syncerus caffer
+SRR10245284	Pig_3	Suidae
+SRR10245285	Zebra_4	Equus burchellii quagga
+SRR10245286	Wildebeest_2	Connochaetes taurinus
+SRR10245287	Hippo_2	Hippopotamus amphibius
+SRR10245288	Impala_8	Aepyceros melampus
+SRR10245289	Impala_7	Aepyceros melampus
+SRR10245290	Hare_3	Lepus
+SRR10245291	Buffalo_3	Syncerus caffer
+SRR10245292	Cane Rat_1	Thryonomys
+SRR10245293	Pig_2	Suidae
+SRR10245294	Gazelle_1	Gazella
+SRR10245295	Zebra_3	Equus burchellii quagga
+SRR10245296	Cattle_9	Bos
+SRR10245297	Wildebeest_1	Connochaetes taurinus
+SRR10245298	Impala_6	Aepyceros melampus
+SRR10245299	Impala_5	Aepyceros melampus
+SRR10245300	Impala_4	Aepyceros melampus
+SRR10245301	Wildebeest_16	Connochaetes taurinus
+SRR10245302	Dikdik_21	Madoqua
+SRR10245303	Dikdik_20	Madoqua
+SRR10245304	Impala_3	Aepyceros melampus
+SRR10245305	Dikdik_19	Madoqua
+SRR10245306	Wildebeest_15	Connochaetes taurinus
+SRR10245307	Topi_1	Damaliscus lunatus korrigum
+SRR10245308	Zebra_2	Equus burchellii quagga
+SRR10245309	Wildebeest_14	Connochaetes taurinus
+SRR10245310	Wildebeest_13	Connochaetes taurinus
+SRR10245311	Wildebeest_12	Connochaetes taurinus
+SRR10245312	Impala_2	Aepyceros melampus
+SRR10245313	Hare_2	Lepus
+SRR10245314	Cattle_8	Bos
+SRR10245315	Cattle_7	Bos
+SRR10245316	Cattle_6	Bos
+SRR10245317	Cattle_5	Bos
+SRR10245318	Cattle_4	Bos
+SRR10245319	Zebra_1	Equus burchellii quagga
+SRR10245320	Cattle_3	Bos
+SRR10245321	Cattle_2	Bos
+SRR10245322	Cattle_1	Bos
+SRR10245323	Wildebeest_11	Connochaetes taurinus
+SRR10245324	Dikdik_18	Madoqua
+SRR10245325	Dikdik_17	Madoqua
+SRR10245326	Dikdik_16	Madoqua
+SRR10245327	Dikdik_15	Madoqua
+SRR10245328	Dikdik_14	Madoqua
+SRR10245329	Dikdik_13	Madoqua
+SRR10245330	Impala_1	Aepyceros melampus
+SRR10245331	Dikdik_12	Madoqua
+SRR10245332	Dikdik_11	Madoqua
+SRR10245333	Dikdik_10	Madoqua
+SRR10245334	Dikdik_9	Madoqua
+SRR10245335	Dikdik_8	Madoqua
+SRR10245336	Dikdik_7	Madoqua
+SRR10245337	Dikdik_6	Madoqua
+SRR10245338	Dikdik_5	Madoqua
+SRR10245339	Dikdik_4	Madoqua
+SRR10245340	Buffalo_2	Syncerus caffer
+SRR10245341	Hippo_1	Hippopotamus amphibius
+SRR10245342	Dikdik_3	Madoqua
+SRR10245343	Dikdik_2	Madoqua
+SRR10245344	Wildebeest_10	Connochaetes taurinus
+SRR10245345	Wildebeest_9	Connochaetes taurinus
+SRR10245346	Wildebeest_8	Connochaetes taurinus
+SRR10245347	Buffalo_1	Syncerus caffer
+SRR10245348	Wildebeest_7	Connochaetes taurinus
+SRR10245349	Wildebeest_6	Connochaetes taurinus
+SRR10245350	Wildebeest_5	Connochaetes taurinus
+SRR10245351	Wildebeest_4	Connochaetes taurinus
+SRR10245352	Hare_1	Lepus
+SRR10245353	Dikdik_1	Madoqua
+SRR7450706	Wildebeest_6	Connochaetes taurinus
+SRR7450707	Wildebeest_2	Connochaetes taurinus
+SRR7450708	Buffalo_9	Syncerus caffer
+SRR7450709	Wildebeest_7	Connochaetes taurinus
+SRR7450710	Wildebeest_25	Connochaetes taurinus
+SRR7450711	Wildebeest_21	Connochaetes taurinus
+SRR7450712	Wildebeest_22	Connochaetes taurinus
+SRR7450713	Topi_2	Damaliscus lunatus
+SRR7450714	Wildebeest_9	Connochaetes taurinus
+SRR7450715	Wildebeest_24	Connochaetes taurinus
+SRR7450716	Wildebeest_20	Connochaetes taurinus
+SRR7450717	Wildebeest_10	Connochaetes taurinus
+SRR7450718	Sheep	Ovis aries
+SRR7450719	Buffalo_15	Syncerus caffer
+SRR7450720	Wildebeest_26	Connochaetes taurinus
+SRR7450721	Giraffe	Giraffa camelopardalis
+SRR7450722	Eland_4	Tragelaphus oryx
+SRR7450723	Wildebeest_27	Connochaetes taurinus
+SRR7450724	Eland_3	Tragelaphus oryx
+SRR7450725	Wildebeest_8	Connochaetes taurinus
+SRR7450726	Eland_2	Tragelaphus oryx
+SRR7450727	Buffalo_5	Syncerus caffer
+SRR7450728	Buffalo_8	Syncerus caffer
+SRR7450729	Wildebeest_5	Connochaetes taurinus
+SRR7450730	Eland_1	Tragelaphus oryx
+SRR7450731	Buffalo_4	Syncerus caffer
+SRR7450732	Wildebeest_4	Connochaetes taurinus
+SRR7450733	Buffalo_3	Syncerus caffer
+SRR7450734	Wildebeest_3	Connochaetes taurinus
+SRR7450735	Topi_1	Damaliscus lunatus
+SRR7450736	Wildebeest_1	Connochaetes taurinus
+SRR7450737	Wildebeest_17	Connochaetes taurinus
+SRR7450738	Buffalo_12	Syncerus caffer
+SRR7450739	Buffalo_6	Syncerus caffer
+SRR7450740	Buffalo_10	Syncerus caffer
+SRR7450741	Buffalo_11	Syncerus caffer
+SRR7450742	Wildebeest_15	Connochaetes taurinus
+SRR7450743	Wildebeest_16	Connochaetes taurinus
+SRR7450744	Porcupine	Hystrix cristata
+SRR7450745	Wildebeest_14	Connochaetes taurinus
+SRR7450746	Buffalo_7	Syncerus caffer
+SRR7450747	Wildebeest_11	Connochaetes taurinus
+SRR7450748	Gazelle	Eudorcas thomsonii
+SRR7450749	Buffalo_2	Syncerus caffer
+SRR7450750	Buffalo_1	Syncerus caffer
+SRR7450751	Rabbit	Lepus microtis
+SRR7450752	Buffalo_14	Syncerus caffer
+SRR7450753	Warthog	Phacochoerus africanus
+SRR7450754	Wildebeest_18	Connochaetes taurinus
+SRR7450755	Wildebeest_19	Connochaetes taurinus
+SRR7450756	Buffalo_16	Syncerus caffer
+SRR7450757	Wildebeest_23	Connochaetes taurinus
+SRR7450758	Zebra	Equus burchellii quagga
+SRR7450759	Buffalo_13	Syncerus caffer
+SRR7450760	Wildebeest_12	Connochaetes taurinus
+SRR7450761	Wildebeest_13	Connochaetes taurinus

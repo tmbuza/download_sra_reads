@@ -11,6 +11,6 @@ echo PROGRESS: "Importing metadata from IMAP-PART 02"
 
 mkdir -p "${OUTDIR}"
 
-mv "${METADATA}" "${OUTDIR}"/metadata.csv
+cp "${METADATA}" "${OUTDIR}"/metadata.csv
 
 

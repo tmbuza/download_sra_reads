@@ -31,47 +31,6 @@ rule all:
         expand("resources/reads/{accession}_1.fastq.gz", outdir=OUTDIR, accession=ACCESSIONS),
         expand("resources/reads/{accession}_2.fastq.gz", outdir=OUTDIR, accession=ACCESSIONS),
 
-# Download metadata
-rule process_sra_metadata:
-    input:
-        srameta="data/metadata/SraRunTable.csv"
-    output:
-        metadata="data/metadata/metadata.csv",
-    script:
-        "scripts/process_sra_metadata.R"
-        
-
-# Get variable barplot
-rule ggplot_variable_freq:
-    input:
-        "data/metadata/metadata.csv"
-    output:
-        png="images/variable_freq.png",
-        svg="images/variable_freq.svg"
-    script:
-        "scripts/plot_var_freq.R"
-
-
-# Get read size
-rule R_dplyr_read_size:
-    input:
-        "data/metadata/metadata.csv"
-    output:
-        asce="results/read_size_asce.csv",
-        desc="results/read_size_desc.csv"
-    script:
-        "scripts/explore_read_size.R"
-      
-
-# Get sample location 
-rule leaflet_sample_location:
-    input:
-        "data/metadata/metadata.csv"
-    output:
-        map="images/sample_gps.png"
-    script:
-        "scripts/get_sample_gps.R"
-
 
 # Get SRA accessions, the first column of metadata
 rule get_sra_accessions:

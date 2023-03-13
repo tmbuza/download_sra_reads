@@ -14,7 +14,7 @@ p { line-height: 2; }
 
 #header { color: white; margin-left: auto; margin-right: auto; 
   text-align: center; line-height: 1.5; width: 100%; padding: 5%; 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(1, 97, 20, 0.9), rgb(162, 255, 0, 0.6)); 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(1, 97, 20, 0.9), rgb(162, 255, 0, 0.6)), url("images/bkgd.png"); 
   /* url("images/bkgd.png"); */
   /* background-image: url("images/bkgd.png"); */
   background-position: bottom;
