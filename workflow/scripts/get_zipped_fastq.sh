@@ -1,13 +1,11 @@
 #!/bin/bash
 
-OUTDIR="data/test"
+INPUTDIR="data/reads"
 
 ###############################
 echo PROGRESS: "Compressing the fastq files"
 ###############################
 
-mkdir -p ${OUTDIR}
+gzip --force "${INPUTDIR/*.fastq
 
-gzip --force --keep --quiet data/reads/*.fastq;
 
-cp data/reads/*.fastq.gz "${OUTDIR}"/;

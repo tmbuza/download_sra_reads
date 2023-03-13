@@ -1,23 +1,32 @@
-# Downloading the fastq files
+# Downloading multiple fastq files
 
 ## Using fasterq-dump
 - Be sure that the `fasterq-dump` is in the path.
-- Type `which fasterq-dump` to confirm if is in the path.
-- Use the absolute path like `~/sratoolkit.3.0.0-mac64/bin/fasterq-dump` if the executable file is not in the path.
-- The example below uses absolute path to execute the `fasterq-dump` command.
+- Type `which fasterq-dump` or `fasterq-dump --help` to confirm.
+- Must specify the output and temporary files.
+- It is possible to specifies a range of SRA accessions to use in a `for loop`.
 
-> In this demo the sratoolkit `~/sratoolkit.3.0.0-mac64` folder is in the home directory.
-> Notice that the output and temporary files are placed in an external volume mounted to the computer.
-
+Example code for download reads for SRA accessions ranging from SRR7450706 to SRR7450761
 
 ```bash
 for (( i = 706; i <= 761; i++ ))
 	do
-		time ~/sratoolkit.3.0.0-mac64/bin/fasterq-dump SRR7450$i \
-		-O /Volumes/SeagateTMB/SRA/BUSHMEAT/SRR7450/ \
-		-t /Volumes/SeagateTMB/SRA/BUSHMEAT/SRR7450/tmpfiles \
-		--threads 4 \
-		--split-3;
+        time fasterq-dump SRR7450$i \
+        --split-3 \
+        --force \
+        --skip-technical \
+        --outdir data/reads \
+        --temp data/temp \
+        --threads 4		
 	done
 ```
 
+## Compressing and uncompressing files
+The microbiome fastq files are usually very large. Compressing them may save lots of space. 
+
+Example syntaxies
+```bash
+gunzip data/reads/*.gz
+
+gzip data/reads/*.fastq
+```

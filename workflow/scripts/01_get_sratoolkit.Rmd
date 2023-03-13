@@ -1,6 +1,6 @@
-# Getting ready to download reads from SRA
+# Setting up SRA Toolkit
 
-## Reads from SRA
+## Quick glimpse
 The NCBI Sequence Read Archive (SRA) stores sequencing data from the next generation sequencing platforms. Users can download data from the SRA archive using the SRA toolkits or custom computational methods. 
 
 ## Demo Installing SRA Toolkit on Mac OS.
@@ -37,7 +37,7 @@ For more information click [here](https://github.com/ncbi/sra-tools/wiki/03.-Qui
 
 
 ## Using already installed sratools
-We can create an environment and install essential toolkits (Refer [IMAP-PART 01](https://tmbuza.github.io/imap-software-requirements/))
+We can create an environment and install essential tools in it. Here is an example of the environment for `sradb` `environment.yml`.
 
 ```bash
 name: sradb

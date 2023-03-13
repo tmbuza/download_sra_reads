@@ -1,7 +1,7 @@
 ---
 title:  "<big><u>IMAP-PART 03</u></big><br><br>Downloading and filtering microbiome sequencing data from SRA database<br><br>"
 subtitle: |
-  | ![](images/bkgd.png)<br>
+  | ![](images/sra.png)<br>
   | Fostering Reproducible Microbiome data Analysis with Snakemake workflow
 date:
 - IMAP-PART 03<br>[Latest GitHub-Repo](https://github.com/tmbuza/imap-download-sra-reads/)<br>
@@ -26,8 +26,6 @@ description: |
 
 <div id="main-container">
 
-
-<!-- Google Fonts: https://fonts.google.com/?preview.text=IMAP%20template&preview.text_type=custom-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton" rel="stylesheet">
@@ -58,6 +56,8 @@ knitr::opts_chunk$set(
 library(tidyverse, suppressPackageStartupMessages())
 library(schtools)
 ```
+
+
 <!-- Main contents -->
 ```{r child='workflow/scripts/00_preface_n_intro.Rmd'}
 ```
@@ -81,7 +81,6 @@ library(schtools)
 
 ```{r next}
 ```
-
 
 <br><hr width=100%><br>
 
