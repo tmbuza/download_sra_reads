@@ -1,0 +1,60 @@
+# Getting ready to download reads from SRA
+
+## Reads from SRA
+The NCBI Sequence Read Archive (SRA) stores sequencing data from the next generation sequencing platforms. Users can download data from the SRA archive using the SRA toolkits or custom computational methods. 
+
+## Demo Installing SRA Toolkit on Mac OS.
+### Download `sratoolkit`
+- Navigate to where you want to install the tools, preferably the home directory.
+- For more information click [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit).
+
+```bash
+curl -LO  https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-mac64.tar.gz
+tar -xf sratoolkit.3.0.0-mac64.tar.gz
+export PATH=$HOME/sratoolkit.3.0.0-mac64/bin/:$PATH
+```
+
+### Create a cache root directory
+```bash
+mkdir -p ~/ncbi
+echo '/repository/user/main/public/root = "cache_directory"' > ~/ncbi/user-settings.mkfg
+```
+
+### Confirm sra toolkit configuration
+- The `vdb-config -i` command below will display a blue colored dialog.
+- Use tab or click `c` to navigate to cache tab.
+- Review the configuration then save `s` and exit `x`.
+
+```bash
+vdb-config -i
+```
+
+![A screenshot of the SRA configuration.](images/sra_config_cache.png)
+
+<br>
+
+For more information click [here](https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration).
+
+
+## Using already installed sratools
+We can create an environment and install essential toolkits (Refer [IMAP-PART 01](https://tmbuza.github.io/imap-software-requirements/))
+
+```bash
+name: sradb
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake =7.19.1
+  - snakemake-minimal =7.19.1
+  - snakedeploy =0.8.6
+  - sra-tools
+  - entrez-direct
+  - pysradb
+  - insilicoseq =1.5.4
+  - seqkit =2.3.1
+```
+
+```bash
+mamba create -bioconda -conda-forge sradb -file environment.yml
+```

@@ -6,7 +6,10 @@ dependencies:
   - snakemake =7.19.1
   - snakemake-minimal =7.19.1
   - snakedeploy =0.8.6
-  - sra-tools
-  - entrez-direct
-  - pysradb
+  - sra-tools =3.0.3
+  - entrez-direct =16.2
+  - pysradb =2.0.0
+  - insilicoseq =1.5.4
+  - seqkit =2.3.1
 
+  # Update the tools accordingly

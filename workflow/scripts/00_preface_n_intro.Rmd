@@ -1,0 +1,9 @@
+# Getting sequencing data from SRA
+
+## Brief Intro
+Microlbiome read sequencing data may be obtained from different sources. The most common ones include:
+
+1. Reads directly from a sequencing platforms.
+2. Reads downloaded from the Sequence Read Archive (SRA) or the European Nucleotide Archive (ENA).
+3. Reads synthesized using sequencing simulators.
+

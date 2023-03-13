@@ -1,5 +1,5 @@
 ---
-title:  "<big><u>IMAP-PART 03</u></big><br><br>How to download Microbiome Sequencing Reads from NCBI-SRA Database<br><br>"
+title:  "<big><u>IMAP-PART 03</u></big><br><br>Downloading and filtering microbiome sequencing data from SRA database<br><br>"
 subtitle: |
   | ![](images/bkgd.png)<br>
   | Fostering Reproducible Microbiome data Analysis with Snakemake workflow
@@ -58,121 +58,46 @@ knitr::opts_chunk$set(
 library(tidyverse, suppressPackageStartupMessages())
 library(schtools)
 ```
-
-# Sequencing Data
-
-# Sequencing Data {#raw-data}
-
-Read sequencing data may be obtained from different sources. The most common ones include:
-
-1. Reads from sequencing platforms for research purposes.
-2. Reads downloaded from the Sequence Read Archive (SRA).
-3. Reads synthesized `in-silico` using special simulation software
-
-
-## Reads from sequencing platforms
-The most common sources of sequencing data are from research projects. There are multiple sequencing platforms out there. For example, Illumina sequencing company uses technologies capable of profiling entire microbial communities present in environmental. Example include: 
-
-- 16S rRNA Sequencing
-- Shotgun Metagenomic Sequencing
-
-## Reads from archives such as NCBI-SRA
-The NCBI Sequence Read Archive (SRA) stores sequencing data from the next generation sequencing platforms. Users can download data from the SRA archive. Below are minimal steps to do that:
-
-### Install SRA Toolkit on Mac OS.
-- Navigate to where you want to install the tools, preferably the home directory.
-- For more information click [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit).
-
-```{}
-curl -LO  https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-mac64.tar.gz
-tar -xf sratoolkit.3.0.0-mac64.tar.gz
-export PATH=$HOME/sratoolkit.3.0.0-mac64/bin/:$PATH
+<!-- Main contents -->
+```{r child='workflow/scripts/00_preface_n_intro.Rmd'}
 ```
-
-### Create a cache root directory
-```{}
-mkdir -p ~/ncbi
-echo '/repository/user/main/public/root = "/Volumes/SeagateTMB/SRA/BUSHMEAT/SRR7450"' > ~/ncbi/user-settings.mkfg
-```
-
-
-### Confirm sra toolkit configuration
-- Command below will display a blue colored dialog.
-- Use tab or click `c` to navigate to cache tab.
-- Review the configuration then save `s` and exit `x`.
-
-```{}
-vdb-config -i
-```
-
-
-![A screenshot of the SRA configuration.](images/sra_config_cache.png){width=100%}
 
 <br>
 
-For more information click [here](https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration).
-
-### Downloading the fastq files
-- Be sure that the `fasterq-dump` is in the path.
-- Type `which fasterq-dump` to confirm if is in the path.
-- Use the absolute path like `~/sratoolkit.3.0.0-mac64/bin/fasterq-dump` if the executable file is not in the path.
-- The example below uses absolute path to execute the `fasterq-dump` command.
-
-> Notice that the output and temporary files are placed in an external drive mounted to the computer.
-> In this demo the sratoolkit folder is in the home directory.
-
-```bash
-for (( i = 706; i <= 761; i++ ))
-	do
-		time ~/sratoolkit.3.0.0-mac64/bin/fasterq-dump SRR7450$i \
-		-O /Volumes/SeagateTMB/SRA/BUSHMEAT/SRR7450/ \
-		-t /Volumes/SeagateTMB/SRA/BUSHMEAT/SRR7450/tmpfiles \
-		--threads 4 \
-		--split-3;
-	done
+```{r child='workflow/scripts/01_get_sratoolkit.Rmd'}
 ```
-
 
 <br>
 
-# How to resize Fastq files
-- Sometimes we want to extract a small subset to test the bioinformatics pipeline.
-- You can resize the fastq files using the `seqkit sample` function [@seqkit2022].
-- Below is a quick demo for extracting only 1% of the paired-end metagenomics sequencing data.
-
-> This example extract 1% of the reads in only two sample (SRR10245277 & SRR10245278)
-
-```bash
-mkdir -p data
-for i in {77..78}
-  do
-    cat SRR102452$i\_R1.fastq \
-    | seqkit sample -p 0.01 \
-    | seqkit shuffle -o data/SRR102452$i\_R1_sub.fastq \
-    | cat SRR102452$i\_R2.fastq \
-    | seqkit sample -p 0.01 \
-    | seqkit shuffle -o data/SRR102452$i\_R2_sub.fastq
-  done
+```{r child='workflow/scripts/02_download_sequences.Rmd'}
 ```
 
-```{r child='workflow/scripts/sequencing_data.Rmd', eval=FALSE}
+<br>
+
+```{r child='workflow/scripts/03_resizing_fastq.Rmd'}
 ```
+
+<br>
+
+```{r next}
+```
+
 
 <br><hr width=100%><br>
 
 # Related work
 ```{block imaprepos, echo=TRUE}
 
-| Repo | Description | Summary |
-|--------------|----------------------------------|--------------|
-| [IMAP-PART1](https://github.com/tmbuza/imap-basic-requirements/) | Getting started with microbiome data analysis | [GH-Pages](https://tmbuza.github.io/imap-basic-requirements/) |
-| [IMAP-PART2](https://github.com/tmbuza/imap-sample-metadata/) | Exploring and profiling microbiome sample metadata | [GH-Pages](https://tmbuza.github.io/imap-sample-metadata/) |
-| [IMAP-PART3](https://github.com/tmbuza/imap-bioinformatics-analysis/) | Bioinformatics analysis of microbiome data | [GH-Pages](https://tmbuza.github.io/imap-bioinformatics-analysis/) |
-| [IMAP-PART4](https://github.com/tmbuza//) |  | [GH-Pages](https://tmbuza.github.io//) |
-| [IMAP-PART5](https://github.com/tmbuza//) |  | [GH-Pages](https://tmbuza.github.io//) |
-| [IMAP-PART6](https://github.com/tmbuza//) |  | [GH-Pages](https://tmbuza.github.io//) |
-| [IMAP-PART7](https://github.com/tmbuza//) |  | [GH-Pages](https://tmbuza.github.io//) |
-| [IMAP-PART8](https://github.com/tmbuza//) |  | [GH-Pages](https://tmbuza.github.io//) |
+| Repo | Description | Status |
+|:-----------------------|----------------------------------|--------------:|
+| [IMAP-PART 01](https://github.com/tmbuza/imap-software-requirements/) | Installing software to get started with microbiome data analysis with Snakemake workflows | [In-progress](https://tmbuza.github.io/imap-software-requirements/) |
+| [IMAP-PART 02](https://github.com/tmbuza/imap-sample-metadata/) | Downloading and exploring microbiome sample metadata from SRA Database | [In-progress](https://tmbuza.github.io/imap-sample-metadata/) |
+| [IMAP-PART 03](https://github.com/tmbuza/imap-download-sra-reads/) | Downloading and filtering microbiome sequencing data from SRA database | [In-progress](https://tmbuza.github.io/imap-download-sra-reads/) |
+| [IMAP-PART 04](https://github.com/tmbuza/imap-read-quality-control/) | Quality Control of Microbiome Next Generation Sequencing Reads | [In-progress](https://tmbuza.github.io/imap-read-quality-control/) |
+| [IMAP-PART 05](https://github.com/tmbuza/imap-bioinformatics-analysis/) | Bioinformatics & classification of preprocessed microbiome sequencing data | [In-progress](https://tmbuza.github.io/imap-bioinformatics-analysis/) |
+| [IMAP-PART 06](https://github.com/tmbuza//) |  | [In-progress](https://tmbuza.github.io//) |
+| [IMAP-PART 07](https://github.com/tmbuza//) |  | [In-progress](https://tmbuza.github.io//) |
+| [IMAP-PART 08](https://github.com/tmbuza//) |  | [In-progress](https://tmbuza.github.io//) |
 ```
 
 
@@ -188,13 +113,11 @@ for i in {77..78}
 
 <br><hr width=100%><br>
 
-<br>
-
 # Appendix {-}
-
 
 ## Project main tree
 ```{bash, include=FALSE}
+mamba install -c conda-forge tree
 bash workflow/scripts/tree.sh
 ```
 
@@ -203,21 +126,16 @@ cat results/project_tree.txt
 ```
 
 ## Screenshot of interactive snakemake report {#smkreport}
-> The interactive snakemake html report can be viewed by opening the `report.html` using any compartible browser. You will be able to explore the workflow and the associated statistics. You will also be able to close the left bar to get a better wider view of the display.
+> The interactive snakemake HTML report can be viewed by opening the `report.html` using any compatible browser. You will be able to explore the workflow and the associated statistics. You can close the left bar to get a more expansive display view.
 
 ```{bash smkrpt, include=FALSE}
 snakemake --unlock;
 snakemake --report report.html;
+pip install html2image
 hti -H report.html -o images/smkreport;
 ```
 
-```{bash staticsmk, include=FALSE}
-snakemake --report report.html
-bash workflow/scripts/smk_html_report.sh
-```
-
 <img src="images/smkreport/screenshot.png">
-
 
 ## Troubleshooting of FAQs
 <ol>
@@ -237,3 +155,4 @@ Last updated on `r format(Sys.time(), '%B %d, %Y')`.<br>
 Github_Repo: `r rmarkdown::metadata$github_repo`.<br>
 Repo compiled and maintained by: [`r rmarkdown::metadata$author`](mailto:`r rmarkdown::metadata$email_address`). 
 </div>
+
