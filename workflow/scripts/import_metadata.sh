@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Creating basic variables
-METADATA="../imap-sample-metadata/data/metadata/PRJNA477349_SraRunTable.csv"
+METADATA="../imap-sample-metadata/data/metadata/metadata.csv"
 OUTDIR="data/metadata"
 
 
