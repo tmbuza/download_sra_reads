@@ -65,7 +65,6 @@ rule fasterq_dump_sra_reads:
         fasterq-dump \
         --split-3 \
         --force \
-        --skip-technical {wildcards.accession} \
         --outdir {params.outfolder} \
         --temp {params.temp} \
         --threads {threads}

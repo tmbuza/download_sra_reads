@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script: resize_fatsq.sh
+# Script: resize_fastq.sh
 
 mkdir -p data
 
