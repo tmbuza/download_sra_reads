@@ -10,8 +10,9 @@ import os
 import csv
 import pandas as pd
 
-METADATA=pd.read_csv('data/metadata/PRJNA477349_SraRunTable.csv').loc[0:3]
-ACCESSIONS=METADATA['Run'].tolist()
+METADATA=pd.read_csv('data/metadata/metadata.csv').loc[0:3]
+ACCESSIONS=METADATA['run'].tolist()
+
 OUTDIR="data/reads" 
 TEMPDIR="data/temp"
 
@@ -25,11 +26,24 @@ if not os.path.exists(TEMPDIR):
 rule all:
     input:
         expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
-        "index.html"
+        expand("data/subset/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
+        "index.html",
 
 
-# Dowload the SRA RUN reads
-rule get_sra_accession: 
+# Import metadata
+rule get_sra_metadata:
+    output:
+        metadata=METADATA
+    shell:
+        """
+        echo "Getting metadata"
+        """
+
+rule extract_sra_accession: 
+    input:
+        metadata=METADATA
+    output:
+        acc=ACCESSIONS
     shell:
         """
         echo "Getting SRA accessions"
@@ -39,9 +53,9 @@ rule get_sra_accession:
 # Dowload the SRA RUN reads
 rule fasterq_dump_sra_reads: 
     input:
-        rules.get_sra_accession.output
+        acc=ACCESSIONS,
     output:
-        "data/reads/{accession}_{sraNum}.fastq",
+        fastq=expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
     params:
         outfolder=OUTDIR,
         temp=TEMPDIR,
@@ -55,6 +69,18 @@ rule fasterq_dump_sra_reads:
         --outdir {params.outfolder} \
         --temp {params.temp} \
         --threads {threads}
+        """
+
+# Subset a test data
+rule resize_for_testing:
+    input:
+        fastq=rules.fasterq_dump_sra_reads.output.fastq,
+    output:
+        expand("data/subset/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
+    threads: 1
+    shell:
+        """
+        bash workflow/scripts/resize_fastq.sh
         """
 
 
@@ -102,84 +128,69 @@ rule deploy_to_github_pages:
 
 
 
-# # # # Subset a test data
-# # # rule seqkit_subset_fastq:
-# # #     input:
-# # #         expand("data/reads/{accession}_1.fastq", accession=ACCESSIONS),
-# # #         expand("data/reads/{accession}_2.fastq", accession=ACCESSIONS),
-# # #     output:
-# # #         "data/test/{accession}_1_sub.fastq",
-# # #         "data/test/{accession}_2_sub.fastq",
-# # #     threads: 1
-# # #     shell:
-# # #         """
-# # #         bash workflow/scripts/subset_fastq.sh
-# # #         """
+# rule seqkit_simple_stats:
+#     input:
+#         script="workflow/scripts/seqkit_stat_1.sh",
+#         rawreads=expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
+#     output:
+#         seqkit1="results/stats1/seqkit_stats.txt",
+#     threads: 1
+#     shell:
+#       "bash {input.script}"
 
 
-# # # rule seqkit_simple_stats:
-# # #     input:
-# # #         script="workflow/scripts/seqkit_stat_1.sh",
-# # #         rawreads=expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
-# # #     output:
-# # #         seqkit1="results/stats1/seqkit_stats.txt",
-# # #     threads: 1
-# # #     shell:
-# # #       "bash {input.script}"
+# rule mothur_mapping_file:
+#     input:
+#         stats1="results/stats1/seqkit_stats.txt"
+#     output:
+#         files="data/metadata/mothur_mapping_file.tsv",
+#     threads: 1
+#     script:
+#       "scripts/mothur_mapping_file.R"
 
 
-# # # rule mothur_mapping_file:
-# # #     input:
-# # #         stats1="results/stats1/seqkit_stats.txt"
-# # #     output:
-# # #         files="data/metadata/mothur_mapping_file.tsv",
-# # #     threads: 1
-# # #     script:
-# # #       "scripts/mothur_mapping_file.R"
+# rule mothur_design_file:
+#     input:
+#         files="data/metadata/mothur_mapping_file.tsv",
+#     output:
+#         files="data/metadata/mothur_design_file.tsv",
+#     threads: 1
+#     script:
+#       "scripts/mothur_design_file.R"
+
+# # Downloading and formatting SILVA and RDP reference databases. The v4 region is extracted from 
+# # SILVA database for use as reference alignment.
+# rule mothur_references:
+# 	input:
+# 		script="workflow/scripts/mothurReferences.sh"
+# 	output:
+# 		silvaV4="data/mothur/references/silva.v4.align",
+# 		rdpFasta="data/mothur/references/trainset16_022016.pds.fasta",
+# 		rdpTax="data/mothur/references/trainset16_022016.pds.tax"
+# 	conda:
+# 		"envs/mothur.yaml"
+# 	shell:
+# 		"bash {input.script}"
 
 
-# # # rule mothur_design_file:
-# # #     input:
-# # #         files="data/metadata/mothur_mapping_file.tsv",
-# # #     output:
-# # #         files="data/metadata/mothur_design_file.tsv",
-# # #     threads: 1
-# # #     script:
-# # #       "scripts/mothur_design_file.R"
-
-# # # # Downloading and formatting SILVA and RDP reference databases. The v4 region is extracted from 
-# # # # SILVA database for use as reference alignment.
-# # # rule mothur_references:
-# # # 	input:
-# # # 		script="workflow/scripts/mothurReferences.sh"
-# # # 	output:
-# # # 		silvaV4="data/mothur/references/silva.v4.align",
-# # # 		rdpFasta="data/mothur/references/trainset16_022016.pds.fasta",
-# # # 		rdpTax="data/mothur/references/trainset16_022016.pds.tax"
-# # # 	conda:
-# # # 		"envs/mothur.yaml"
-# # # 	shell:
-# # # 		"bash {input.script}"
+# # Downloading the Zymo mock sequence files and extracting v4 region for error estimation.
+# rule mothur_zymo_mock:
+# 	input:
+# 		script="workflow/scripts/mothurMock.sh",
+# 		silvaV4="data/mothur/references/silva.v4.align",
+# 	output:
+# 		mockV4="data/mothur/references/zymo.mock.16S.v4.fasta"
+# 	conda:
+# 		"envs/mothur.yaml"
+# 	shell:
+# 		"bash {input.script}"
 
 
-# # # # Downloading the Zymo mock sequence files and extracting v4 region for error estimation.
-# # # rule mothur_zymo_mock:
-# # # 	input:
-# # # 		script="workflow/scripts/mothurMock.sh",
-# # # 		silvaV4="data/mothur/references/silva.v4.align",
-# # # 	output:
-# # # 		mockV4="data/mothur/references/zymo.mock.16S.v4.fasta"
-# # # 	conda:
-# # # 		"envs/mothur.yaml"
-# # # 	shell:
-# # # 		"bash {input.script}"
-
-
-# # # rule gather_bioinfo_resources:
-# # #     shell:
-# # #         """
-# # #         bash workflow/scripts/get_bioinfo_resources.sh
-# # #         """
+# rule gather_bioinfo_resources:
+#     shell:
+#         """
+#         bash workflow/scripts/get_bioinfo_resources.sh
+#         """
 
 
 

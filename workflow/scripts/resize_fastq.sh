@@ -13,3 +13,5 @@ for i in {77..78}
     | seqkit sample -p 0.01 \
     | seqkit shuffle -o data/SRR102452$i\_R2_sub.fastq
   done
+
+  

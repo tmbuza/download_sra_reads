@@ -1,4 +1,4 @@
-# Downloading microbiome sequences from SRA
+# Getting fastq data from SRA
 
 ## Brief Intro
 Microlbiome read sequencing data may be obtained from different sources. The most common ones include:

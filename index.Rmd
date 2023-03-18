@@ -1,5 +1,5 @@
 ---
-title:  "<big><u>IMAP-PART 03</u></big><br><br>Downloading and filtering microbiome sequencing data from SRA database<br><br>"
+title:  "<big><u>IMAP-PART 03</u></big><br><br>Downloading microbiome fastq sequences from SRA database<br><br>"
 subtitle: |
   | ![](images/sra.png)<br>
   | Fostering Reproducible Microbiome data Analysis with Snakemake workflow
@@ -57,7 +57,6 @@ knitr::opts_chunk$set(
 library(tidyverse, suppressPackageStartupMessages())
 library(schtools)
 ```
-
 
 <!-- Main contents -->
 ```{r child='workflow/scripts/00_preface_n_intro.Rmd'}
@@ -117,7 +116,6 @@ library(schtools)
 
 ## Project main tree
 ```{bash, include=FALSE}
-mamba install -c conda-forge tree
 bash workflow/scripts/tree.sh
 ```
 
