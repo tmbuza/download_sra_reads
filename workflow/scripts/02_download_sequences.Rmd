@@ -1,10 +1,8 @@
-# Downloading multiple fastq files
-
-## Using fasterq-dump
-- Be sure that the `fasterq-dump` is in the path.
+## Downloading multiple fastq files
+- Make sure that the `fasterq-dump` is in the path.
 - Type `which fasterq-dump` or `fasterq-dump --help` to confirm.
 - Must specify the output and temporary files.
-- It is possible to specifies a range of SRA accessions to use in a `for loop`.
+- It is possible to specifies a range of SRA accessions in a `for loop`.
 
 Example code for download reads for SRA accessions ranging from SRR7450706 to SRR7450761
 
@@ -21,12 +19,19 @@ for (( i = 706; i <= 761; i++ ))
 	done
 ```
 
+<br>
+
 ## Compressing and uncompressing files
 The microbiome fastq files are usually very large. Compressing them may save lots of space. 
 
-Example syntaxies
+Uncompressing with bash
 ```bash
 gunzip data/reads/*.gz
+```
 
+<br>
+
+Compressing with bash
+```bash
 gzip data/reads/*.fastq
 ```

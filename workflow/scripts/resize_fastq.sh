@@ -4,14 +4,15 @@
 
 mkdir -p data
 
-for i in {77..78}
+mkdir -p data
+for i in {77..80}
   do
-    cat SRR102452$i\_R1.fastq \
+    cat SRR102452$i\_1.fastq \
     | seqkit sample -p 0.01 \
-    | seqkit shuffle -o data/SRR102452$i\_R1_sub.fastq \
-    | cat SRR102452$i\_R2.fastq \
+    | seqkit shuffle -o data/test/SRR102452$i\_1.fastq \
+    | cat SRR102452$i\_2.fastq \
     | seqkit sample -p 0.01 \
-    | seqkit shuffle -o data/SRR102452$i\_R2_sub.fastq
+    | seqkit shuffle -o data/test/SRR102452$i\_2.fastq
   done
 
   

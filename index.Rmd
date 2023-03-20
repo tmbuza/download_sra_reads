@@ -5,7 +5,8 @@ subtitle: |
   | Fostering Reproducible Microbiome data Analysis with Snakemake workflow
 date:
 - IMAP-PART 03<br>[Latest GitHub-Repo](https://github.com/tmbuza/imap-download-sra-reads/)<br>
-- Updated on `r Sys.Date()`
+- Maintained by Teresia Mrema-Buza<br><br>
+- <b>Updated on `r Sys.Date()`</b>
 author: Teresia Mrema-Buza
 output: 
   html_document: 
@@ -23,7 +24,6 @@ github_repo: "https://github.com/tmbuza/imap-download-sra-reads"
 description: |
   Minimal summary describing features for getting started with microbiome data analysis.
 ---
-
 
 <div id="main-container">
 
@@ -57,10 +57,24 @@ knitr::opts_chunk$set(
 library(tidyverse, suppressPackageStartupMessages())
 library(schtools)
 ```
+# Downloading SRA reads from archives
 
-<!-- Main contents -->
 ```{r child='workflow/scripts/00_preface_n_intro.Rmd'}
 ```
+
+<br>
+
+## Snakemake workflow for downloading SRA reads
+
+```{bash ruledag, include=FALSE}
+bash workflow/scripts/rules_dag.sh
+```
+
+![](dags/rulegraph.svg)
+
+A tentative snakemake workflow that defines **rules for downloading fastq sequences from SRA** in a DAG (directed acyclic graph) format. 
+A detailed interactive snakemake report is available [here](https://complexdatainsights.com/imap/imap-download-sra-reads/report.html).
+
 
 <br>
 
@@ -77,11 +91,6 @@ library(schtools)
 ```{r child='workflow/scripts/03_resizing_fastq.Rmd'}
 ```
 
-<br>
-
-```{r next}
-```
-
 <br><hr width=100%><br>
 
 # Related work
@@ -89,7 +98,8 @@ library(schtools)
 
 | Repo | Description | Status |
 |:-----------------------|----------------------------------|--------------:|
-| [IMAP-PART 01](https://github.com/tmbuza/imap-software-requirements/) | Installing software to get started with microbiome data analysis with Snakemake workflows | [In-progress](https://tmbuza.github.io/imap-software-requirements/) |
+| [IMAP-GLIMPSE](https://github.com/datainsights/imap-project-overview/) | IMAP project overview | [In-progress](https://datainsights.github.io/imap-project-overview/) |
+| [IMAP-PART 01](https://github.com/tmbuza/imap-software-requirements/) | Software requirement for microbiome data analysis with Snakemake workflows | [In-progress](https://tmbuza.github.io/imap-software-requirements/) |
 | [IMAP-PART 02](https://github.com/tmbuza/imap-sample-metadata/) | Downloading and exploring microbiome sample metadata from SRA Database | [In-progress](https://tmbuza.github.io/imap-sample-metadata/) |
 | [IMAP-PART 03](https://github.com/tmbuza/imap-download-sra-reads/) | Downloading and filtering microbiome sequencing data from SRA database | [In-progress](https://tmbuza.github.io/imap-download-sra-reads/) |
 | [IMAP-PART 04](https://github.com/tmbuza/imap-read-quality-control/) | Quality Control of Microbiome Next Generation Sequencing Reads | [In-progress](https://tmbuza.github.io/imap-read-quality-control/) |
@@ -98,7 +108,6 @@ library(schtools)
 | [IMAP-PART 07](https://github.com/tmbuza//) |  | [In-progress](https://tmbuza.github.io//) |
 | [IMAP-PART 08](https://github.com/tmbuza//) |  | [In-progress](https://tmbuza.github.io//) |
 ```
-
 
 ## Citation
 
