@@ -26,7 +26,7 @@ if not os.path.exists(TEMPDIR):
    os.makedirs(TEMPDIR)
 
 
-report: "report/workflow.rst"
+report: "reports/workflow.rst"
 
 
 # Master rule for controlling workflow.
@@ -91,7 +91,7 @@ rule resize_for_testing:
 # Get dot rule graphs
 rule dot_rules_graph:
 	output:
-		report("dags/rulegraph.svg", caption="reports/rulegraph.rst", category="Graph"),
+		report("dags/rulegraph.svg", caption="reports/rulegraph.rst", category="Rule graph"),
 	shell:
 		"bash workflow/scripts/rules_dag.sh"
 
@@ -109,7 +109,7 @@ rule project_tree:
 rule static_snakemake_report:
     output:
         smkhtml="report.html",
-        html2png="images/smkreport/screenshot.png"
+        html2png=report("images/smkreport/screenshot.png", caption="reports/rsmkrpt.rst", category="Static report"),
     shell:
         """
         bash workflow/scripts/smk_html_report.sh
