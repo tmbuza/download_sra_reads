@@ -1,8 +1,0 @@
-# config.yaml
-
-sraNum:
-  - 1
-  - 2
-
-# Random seed
-seed: 110912
