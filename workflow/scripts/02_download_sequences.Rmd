@@ -4,7 +4,7 @@
 - Must specify the output and temporary files.
 - It is possible to specifies a range of SRA accessions in a `for loop`.
 
-Example code for download reads for SRA accessions ranging from SRR7450706 to SRR7450761
+Example code for downloading reads from the NCBI-SRA for accessions ranging from SRR7450706 to SRR7450761.
 
 ```bash
 for (( i = 706; i <= 761; i++ ))

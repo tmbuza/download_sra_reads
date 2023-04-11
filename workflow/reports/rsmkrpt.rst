@@ -1,1 +1,0 @@
-Screenshot of the interactive snakemake workflow report.

@@ -73,7 +73,9 @@ bash workflow/scripts/rules_dag.sh
 ![](dags/rulegraph.svg)
 
 A tentative snakemake workflow that defines **rules for downloading fastq sequences from SRA** in a DAG (directed acyclic graph) format. 
-A detailed interactive snakemake report is available [here](https://complexdatainsights.com/imap/imap-download-sra-reads/report.html).
+A detailed interactive snakemake report is available [here](https://complexdatainsights.com/imap/imap-download-sra-reads/report.html). Use a wider screen to get a better interactive snakemake report.
+The interactive map of project sampling points is available [here.](https://complexdatainsights.com/imap/imap-sample-metadata/sample_gps.html) 
+
 
 <br>
 
@@ -102,8 +104,11 @@ A detailed interactive snakemake report is available [here](https://complexdatai
 | [IMAP-PART 02](https://github.com/tmbuza/imap-sample-metadata/) | Downloading and exploring microbiome sample metadata from SRA Database | [In-progress](https://tmbuza.github.io/imap-sample-metadata/) |
 | [IMAP-PART 03](https://github.com/tmbuza/imap-download-sra-reads/) | Downloading and filtering microbiome sequencing data from SRA database | [In-progress](https://tmbuza.github.io/imap-download-sra-reads/) |
 | [IMAP-PART 04](https://github.com/tmbuza/imap-read-quality-control/) | Quality Control of Microbiome Next Generation Sequencing Reads | [In-progress](https://tmbuza.github.io/imap-read-quality-control/) |
-| [IMAP-PART 05](https://github.com/tmbuza/imap-bioinformatics-analysis/) | Bioinformatics & classification of preprocessed microbiome sequencing data | [In-progress](https://tmbuza.github.io/imap-bioinformatics-analysis/) |
+| [IMAP-PART 05](https://github.com/tmbuza/imap-bioinformatics-mothur/) | Microbial profiling using MOTHUR and Snakemake workflows | [In-progress](https://tmbuza.github.io/imap-bioinformatics-mothur/) |
 | [IMAP-PART 06](https://github.com/tmbuza/imap-bioinformatics-qiime2/) | Microbial profiling using QIIME2 and Snakemake workflows | [In-progress](https://tmbuza.github.io/imap-bioinformatics-qiime2/) |
+| [IMAP-PART 07](https://github.com/tmbuza/imap-data-processing/) | Processing Output from 16S-Based microbiome bioinformatics pipelines| [In-progress](https://tmbuza.github.io/imap-data-processing/) |
+| [IMAP-PART 08](https://github.com/tmbuza/imap-exploratory-analysis/) | Exploratory Analysis of 16S-Based Microbiome Processed Data | [In-progress](https://tmbuza.github.io/imap-exploratory-analysis/) |
+| [IMAP-SUMMARY](https://github.com/tmbuza/imap-snakemake-workflows/) | Summary of snakemake workflows for microbiome data analysis | [In-progress](https://tmbuza.github.io/imap-snakemake-workflows/) |
 ```
 
 ## Citation
@@ -129,17 +134,12 @@ bash workflow/scripts/tree.sh
 cat results/project_tree.txt
 ```
 
-## Static snakemake report {#smkreport}
-> The interactive snakemake HTML report can be viewed by opening the `report.html` using any compatible browser. You will be able to explore the workflow and the associated statistics. You can close the left bar to get a more expansive display view.
+<br>
 
-```{bash smkrpt, include=FALSE}
-snakemake --unlock;
-snakemake --report report.html;
-pip install html2image
-hti -H report.html -o images/smkreport;
-```
+![](images/smkreport/screenshot.png)
 
-<img src="images/smkreport/screenshot.png">
+<br>
+
 
 ## Troubleshooting of FAQs
 <ol>
@@ -159,4 +159,3 @@ Last updated on `r format(Sys.time(), '%B %d, %Y')`.<br>
 Github_Repo: `r rmarkdown::metadata$github_repo`.<br>
 Repo compiled and maintained by: [`r rmarkdown::metadata$author`](mailto:`r rmarkdown::metadata$email_address`). 
 </div>
-

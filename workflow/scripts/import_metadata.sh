@@ -1,16 +1,14 @@
 #!/bin/bash
 
 # Creating basic variables
-METADATA="../imap-sample-metadata/data/metadata/metadata.csv"
-OUTDIR="data/metadata"
+METADATADIR="../imap-sample-metadata/config"
+OUTDIR="config"
 
 
-###############################
-echo PROGRESS: "Importing metadata from IMAP-PART 02"
-###############################
+echo PROGRESS: "Importing samples and units metadata files"
 
 mkdir -p "${OUTDIR}"
 
-cp "${METADATA}" "${OUTDIR}"/metadata.csv
+cp "${METADATADIR}"/*.tsv "${OUTDIR}"/
 
 

@@ -1,199 +1,65 @@
 from snakemake.utils import min_version
 
-min_version("6.10.0")
-
-# Configuration file containing all user-specified settings
-configfile: "config/config.yaml"
+##### set minimum snakemake version #####
+min_version("6.4.1")
 
 
-report: "reports/workflow.rst"
+##### setup report #####
+configfile: "config/config.yml"
+
+# import os
+# import csv
+# import pandas as pd
+
+# METADATA = (
+#     pd.read_csv(config["samples"], sep="\t", dtype={"sample_name": str})
+#     .set_index("sample_name", drop=False)
+#     .sort_index()
+# )
+
+# SAMPLES = METADATA["sample_name"]
 
 
-import os
-import csv
-import pandas as pd
+# OUTDIR="data/reads" 
+# TEMPDIR="data/temp"
 
-METADATA=pd.read_csv('data/metadata/metadata.csv').loc[0:3]
-ACCESSIONS=METADATA['run'].tolist()
+# if not os.path.exists(OUTDIR):
+#    os.makedirs(OUTDIR)
 
-OUTDIR="data/reads" 
-TEMPDIR="data/temp"
-
-if not os.path.exists(OUTDIR):
-   os.makedirs(OUTDIR)
-
-if not os.path.exists(TEMPDIR):
-   os.makedirs(TEMPDIR)
+# if not os.path.exists(TEMPDIR):
+#    os.makedirs(TEMPDIR)
 
 
-report: "reports/workflow.rst"
+report: "report/workflow.rst"
+
+
+##### setup singularity #####
+
+
+# this container defines the underlying OS for each job when using the workflow
+# with --use-conda --use-singularity
+# container: "docker://continuumio/miniconda3"
+
+
+##### load rules #####
+
+
+include: "rules/common.smk"
+include: "rules/import_metadata.smk"
+include: "rules/download_sra_fastq.smk"
+# include: "rules/resize_fastq_files.smk"
+
+include: "rules/rmd_report.smk"
 
 
 # Master rule for controlling workflow.
 rule all:
     input:
-        expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
-        expand("data/test/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
         "index.html",
-
-
-# Import metadata
-rule get_sra_metadata:
-    output:
-        metadata="data/metadata/metadata.csv"
-    shell:
-        "bash workflow/scripts/import_metadata.sh"
-
-
-rule extract_sra_accession: 
-    input:
-        metadata=rules.get_sra_metadata.output,
-    output:
-        acc="results/run_accessions.txt",
-    script:
-        "scripts/get_sra_accessions.py"
-        
-
-
-# Dowload the SRA RUN reads
-rule fasterq_dump_sra_reads: 
-    input:
-        acc=rules.extract_sra_accession.output,
-    output:
-        fastq=expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
-    params:
-        outfolder=OUTDIR,
-        temp=TEMPDIR,
-    threads: 1
-    shell:
-        """
-        fasterq-dump \
-        --split-3 \
-        --force \
-        --outdir {params.outfolder} \
-        --temp {params.temp} \
-        --threads {threads}
-        """
-
-# Subset a test data
-rule resize_for_testing:
-    input:
-        fastq=rules.fasterq_dump_sra_reads.output,
-    output:
-        expand("data/test/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
-    threads: 1
-    shell:
-        """
-        bash workflow/scripts/resize_fastq.sh
-        """
-
-
-# Get dot rule graphs
-rule dot_rules_graph:
-	output:
-		report("dags/rulegraph.svg", caption="reports/rulegraph.rst", category="Rule graph"),
-	shell:
-		"bash workflow/scripts/rules_dag.sh"
-
-
-# Get project tree
-rule project_tree:
-    output:
-        tree="results/project_tree.txt"
-    shell:
-        """
-        bash workflow/scripts/tree.sh
-        """
-
-# Get smk static report
-rule static_snakemake_report:
-    output:
-        smkhtml="report.html",
-        html2png=report("images/smkreport/screenshot.png", caption="reports/rsmkrpt.rst", category="Static report"),
-    shell:
-        """
-        bash workflow/scripts/smk_html_report.sh
-        """
-
-rule deploy_to_github_pages:
-    input:
-        script="workflow/scripts/render.R",
-        rmd="index.Rmd",
-        tree="results/project_tree.txt",
-        html2png=rules.static_snakemake_report.output.html2png,
-        rules="dags/rulegraph.svg",
-    output:
-        doc="index.html",
-    shell:
-        """
-        R -e "library(rmarkdown); render('{input.rmd}')"
-        """
-
-
-
-# rule seqkit_simple_stats:
-#     input:
-#         script="workflow/scripts/seqkit_stat_1.sh",
-#         rawreads=expand("data/reads/{accession}_{sraNum}.fastq", accession=ACCESSIONS, sraNum=config["sraNum"]),
-#     output:
-#         seqkit1="results/stats1/seqkit_stats.txt",
-#     threads: 1
-#     shell:
-#       "bash {input.script}"
-
-
-# rule mothur_mapping_file:
-#     input:
-#         stats1="results/stats1/seqkit_stats.txt"
-#     output:
-#         files="data/metadata/mothur_mapping_file.tsv",
-#     threads: 1
-#     script:
-#       "scripts/mothur_mapping_file.R"
-
-
-# rule mothur_design_file:
-#     input:
-#         files="data/metadata/mothur_mapping_file.tsv",
-#     output:
-#         files="data/metadata/mothur_design_file.tsv",
-#     threads: 1
-#     script:
-#       "scripts/mothur_design_file.R"
-
-# # Downloading and formatting SILVA and RDP reference databases. The v4 region is extracted from 
-# # SILVA database for use as reference alignment.
-# rule mothur_references:
-# 	input:
-# 		script="workflow/scripts/mothurReferences.sh"
-# 	output:
-# 		silvaV4="data/mothur/references/silva.v4.align",
-# 		rdpFasta="data/mothur/references/trainset16_022016.pds.fasta",
-# 		rdpTax="data/mothur/references/trainset16_022016.pds.tax"
-# 	conda:
-# 		"envs/mothur.yaml"
-# 	shell:
-# 		"bash {input.script}"
-
-
-# # Downloading the Zymo mock sequence files and extracting v4 region for error estimation.
-# rule mothur_zymo_mock:
-# 	input:
-# 		script="workflow/scripts/mothurMock.sh",
-# 		silvaV4="data/mothur/references/silva.v4.align",
-# 	output:
-# 		mockV4="data/mothur/references/zymo.mock.16S.v4.fasta"
-# 	conda:
-# 		"envs/mothur.yaml"
-# 	shell:
-# 		"bash {input.script}"
-
-
-# rule gather_bioinfo_resources:
-#     shell:
-#         """
-#         bash workflow/scripts/get_bioinfo_resources.sh
-#         """
+        "config/samples.tsv",
+        "config/units.tsv",     
+        gzfq=expand("{outdir}/{sample}.fastq.gz", outdir=OUTDIR, sample=SAMPLES),
+        # expand("data/reads/{sample}_{sraNum}.fastq", sample=SAMPLES, sraNum=config["sraNum"]),
 
 
 
