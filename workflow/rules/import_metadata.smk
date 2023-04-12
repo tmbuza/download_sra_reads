@@ -1,12 +1,9 @@
 # Import metadata
 
-rule get_sra_metadata:
-    input:
-       script="workflow/scripts/import_metadata.sh"
+rule import_metadata:
     output:
         samples="config/samples.tsv",
         units="config/units.tsv"
     shell:
-        "bash {input.script}"
-
+        "bash workflow/scripts/import_metadata.sh"
         
