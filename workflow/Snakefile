@@ -46,7 +46,9 @@ report: "report/workflow.rst"
 
 include: "rules/common.smk"
 include: "rules/import_metadata.smk"
-include: "rules/download_sra_fastq.smk"
+include: "rules/fasterq_dump_fastq.smk"
+include: "rules/pigz_compress_fastq.smk"
+include: "rules/extract_sra_accs.smk"
 # include: "rules/resize_fastq_files.smk"
 
 include: "rules/rmd_report.smk"
@@ -56,10 +58,18 @@ include: "rules/rmd_report.smk"
 rule all:
     input:
         "index.html",
-        "config/samples.tsv",
-        "config/units.tsv",     
-        gzfq=expand("{outdir}/{sample}.fastq.gz", outdir=OUTDIR, sample=SAMPLES),
-        # expand("data/reads/{sample}_{sraNum}.fastq", sample=SAMPLES, sraNum=config["sraNum"]),
+        # "config/pe_samples.tsv",
+        # "config/pe_units.tsv",
+        # "resources/metadata/pe_metadata.tsv",
+        # "config/se_samples.tsv",
+        # "config/se_units.tsv",
+        # "resources/metadata/se_metadata.tsv",
+
+        # "config/sra_accs.txt",
+
+        expand("{outdir}/{sample}_{sraNum}.fastq", outdir=OUTDIR, sample=SAMPLES, sraNum=config["sraNum"]),
+        expand("{outdir}/{sample}_{sraNum}.fastq.gz", outdir=OUTDIR, sample=SAMPLES, sraNum=config["sraNum"]),
+
 
 
 

@@ -1,10 +1,12 @@
 # config.yaml
 
-# Path to sample sheet (TSV format, columns: sample, condition, ...)
-samples: config/samples.tsv
+# Path to sample sheet (TSV format, columns: sample_name, condition, ...)
+pe_samples: config/pe_samples.tsv
+se_samples: config/se_samples.tsv
 
-# Path to sequencing unit sheet (TSV format, columns: sample, unit, fq1, fq2)
-units: config/units.tsv
+# Path to sequencing unit sheet (TSV format, columns: sample_name, unit, fq1, fq2)
+pe_units: config/pe_units.tsv
+se_units: config/se_units.tsv
 
 # Change these settings before running workflow.
 
@@ -75,12 +77,9 @@ readNum:
   - R1
   - R2
 
-pairedEnd:
+sraNum:
   - 1
   - 2
-
-singleEnd:
-  - 1
 
 mothurGroups:
   - sample

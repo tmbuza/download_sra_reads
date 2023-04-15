@@ -1,14 +1,11 @@
-#!/bin/bash
+METADATA="../imap-sample-metadata/resources/metadata"
+SAMPLESUNITS="../imap-sample-metadata/config"
+OUTDIR="resources/metadata"
+CONFIG="config"
 
-# Creating basic variables
-METADATADIR="../imap-sample-metadata/config"
-OUTDIR="config"
+echo PROGRESS: Importing processed metadata
 
+mkdir -p "${OUTDIR}" "${CONFIG}"
 
-echo PROGRESS: "Importing samples and units metadata files"
-
-mkdir -p "${OUTDIR}"
-
-cp "${METADATADIR}"/*.tsv "${OUTDIR}"/
-
-
+cp "${METADATA}"/*.tsv "${OUTDIR}"
+cp "${SAMPLESUNITS}"/*.tsv "${CONFIG}"

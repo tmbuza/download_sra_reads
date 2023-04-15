@@ -3,7 +3,7 @@ import csv
 import pandas as pd
 
 METADATA = (
-    pd.read_csv(config["samples"], sep="\t", dtype={"sample_name": str})
+    pd.read_csv(config["pe_samples"], sep="\t", dtype={"sample_name": str})
     .set_index("sample_name", drop=False)
     .sort_index()
 )
