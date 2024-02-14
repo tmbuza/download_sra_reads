@@ -1,0 +1,70 @@
+.
+├── LICENSE
+├── README.md
+├── _book
+├── _main.Rmd
+├── acc.txt
+├── bs4_template.html
+├── config
+│   ├── acc.txt
+│   ├── config.yml
+│   ├── pe_samples.tsv
+│   ├── pe_units.tsv
+│   ├── se_samples.tsv
+│   ├── se_units.tsv
+│   └── sra_accs.txt
+├── dags
+│   ├── rulegraph.png
+│   └── rulegraph.svg
+├── data
+│   ├── reads
+│   ├── reads_
+│   └── temp
+├── docs
+│   ├── env_spec_file.txt
+│   └── libs
+├── images
+│   ├── PRJNA208226_read_size.png
+│   ├── analysis_creation_time.svg
+│   ├── analysis_statistics.svg
+│   ├── geeks.png
+│   ├── gpsfiles
+│   ├── metadata.png
+│   ├── mymap.html
+│   ├── rule_runtime_date.png
+│   ├── sample_gps.html
+│   ├── sample_gps.png
+│   ├── sample_gps_files
+│   ├── sample_gps_py.html
+│   ├── smk_static_report.png
+│   ├── sra.png
+│   ├── sra_config_cache.png
+│   └── sra_run_selector.png
+├── index.Rmd
+├── index.html
+├── library
+│   ├── apa.csl
+│   ├── imap.bib
+│   └── references.bib
+├── renv
+│   ├── activate.R
+│   ├── library
+│   └── staging
+├── renv.lock
+├── report.html
+├── resources
+│   ├── metadata
+│   └── session_info.txt
+├── results
+│   └── project_tree.txt
+├── styles.css
+├── test
+└── workflow
+    ├── Snakefile
+    ├── envs
+    ├── report
+    ├── rules
+    ├── schemas
+    └── scripts
+
+27 directories, 41 files

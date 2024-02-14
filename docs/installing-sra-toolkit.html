@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 Installing SRA Toolkit | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<meta name="author" content="Teresia Mrema-Buza">
+<meta name="description" content="Navigate to where you want to install the tools, preferably the home directory. For more information click here. Demo on MAC OS curl -LO...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="2 Installing SRA Toolkit | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tmbuza.github.io/imap-project-overview/installing-sra-toolkit.html">
+<meta property="og:image" content="https://tmbuza.github.io/imap-project-overview/images/planning.png">
+<meta property="og:description" content="Navigate to where you want to install the tools, preferably the home directory. For more information click here. Demo on MAC OS curl -LO...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 Installing SRA Toolkit | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:description" content="Navigate to where you want to install the tools, preferably the home directory. For more information click here. Demo on MAC OS curl -LO...">
+<meta name="twitter:image" content="https://tmbuza.github.io/imap-project-overview/images/planning.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Sen-0.4.8/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/Bitter-0.4.8/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="End-to-End Practical User Guides Using Integrated Approaches"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a>:
+        <small class="text-muted">End-to-End Practical User Guides Using Integrated Approaches</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Downloading microbiome fastq sequences from SRA database</a></li>
+<li><a class="" href="sources-of-reads.html"><span class="header-section-number">1</span> Sources of reads</a></li>
+<li><a class="active" href="installing-sra-toolkit.html"><span class="header-section-number">2</span> Installing SRA Toolkit</a></li>
+<li><a class="" href="downloading-multiple-fastq-files.html"><span class="header-section-number">3</span> Downloading multiple fastq files</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">B</span> Session Information</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tmbuza/imap-download-sra-reads.git">View book source <i class="fas fa-air-freshener"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="installing-sra-toolkit" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Installing SRA Toolkit<a class="anchor" aria-label="anchor" href="#installing-sra-toolkit"><i class="fas fa-link"></i></a>
+</h1>
+<ul>
+<li>Navigate to where you want to install the tools, preferably the home directory.</li>
+<li>For more information click <a href="https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit">here</a>.</li>
+</ul>
+<p>Demo on MAC OS</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="installing-sra-toolkit.html#cb1-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LO</span>  https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-mac64.tar.gz</span>
+<span id="cb1-2"><a href="installing-sra-toolkit.html#cb1-2" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> sratoolkit.3.0.0-mac64.tar.gz</span>
+<span id="cb1-3"><a href="installing-sra-toolkit.html#cb1-3" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$HOME</span>/sratoolkit.3.0.0-mac64/bin/:<span class="va">$PATH</span></span></code></pre></div>
+<div id="create-a-cache-root-directory" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Create a cache root directory<a class="anchor" aria-label="anchor" href="#create-a-cache-root-directory"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="installing-sra-toolkit.html#cb2-1" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/ncbi</span>
+<span id="cb2-2"><a href="installing-sra-toolkit.html#cb2-2" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'/repository/user/main/public/root = "cache_directory"'</span> <span class="op">&gt;</span> ~/ncbi/user-settings.mkfg</span></code></pre></div>
+</div>
+<div id="confirm-sra-toolkit-configuration" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Confirm sra toolkit configuration<a class="anchor" aria-label="anchor" href="#confirm-sra-toolkit-configuration"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>The <code>vdb-config -i</code> command below will display a blue colored dialog.</li>
+<li>Use tab or click <code>c</code> to navigate to cache tab.</li>
+<li>Review the configuration then save <code>s</code> and exit <code>x</code>.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="installing-sra-toolkit.html#cb3-1" tabindex="-1"></a><span class="ex">vdb-config</span> <span class="at">-i</span></span></code></pre></div>
+<div class="float">
+<img src="images/sra_config_cache.png" alt="A screenshot of the SRA configuration."><div class="figcaption">A screenshot of the SRA configuration.</div>
+</div>
+<p><br></p>
+<p>For more information click <a href="https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration">here</a>.</p>
+</div>
+<div id="alternative-method" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Alternative method<a class="anchor" aria-label="anchor" href="#alternative-method"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can create an environment and install essential tools in it. Example, <code>sradb</code> using <code>environment.yml</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="installing-sra-toolkit.html#cb4-1" tabindex="-1"></a><span class="ex">name:</span> sradb</span>
+<span id="cb4-2"><a href="installing-sra-toolkit.html#cb4-2" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb4-3"><a href="installing-sra-toolkit.html#cb4-3" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb4-4"><a href="installing-sra-toolkit.html#cb4-4" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb4-5"><a href="installing-sra-toolkit.html#cb4-5" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb4-6"><a href="installing-sra-toolkit.html#cb4-6" tabindex="-1"></a>  <span class="ex">-</span> sra-tools</span>
+<span id="cb4-7"><a href="installing-sra-toolkit.html#cb4-7" tabindex="-1"></a>  <span class="ex">-</span> entrez-direct</span>
+<span id="cb4-8"><a href="installing-sra-toolkit.html#cb4-8" tabindex="-1"></a>  <span class="ex">-</span> pysradb</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="installing-sra-toolkit.html#cb5-1" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-c</span> bioconda <span class="at">-c</span> conda-forge sradb <span class="at">-file</span> environment.yml</span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sources-of-reads.html"><span class="header-section-number">1</span> Sources of reads</a></div>
+<div class="next"><a href="downloading-multiple-fastq-files.html"><span class="header-section-number">3</span> Downloading multiple fastq files</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#installing-sra-toolkit"><span class="header-section-number">2</span> Installing SRA Toolkit</a></li>
+<li><a class="nav-link" href="#create-a-cache-root-directory"><span class="header-section-number">2.1</span> Create a cache root directory</a></li>
+<li><a class="nav-link" href="#confirm-sra-toolkit-configuration"><span class="header-section-number">2.2</span> Confirm sra toolkit configuration</a></li>
+<li><a class="nav-link" href="#alternative-method"><span class="header-section-number">2.3</span> Alternative method</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tmbuza/imap-download-sra-reads.git/blob/gh-pages/01-get-sratoolkit.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-download-sra-reads.git/edit/gh-pages/01-get-sratoolkit.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-02-15</b>.</p>
+<br>
+</div>
+      <div class="col-12 col-md-6 mt-3">
+        <p>Note: This practical guide was created using the <a class="text-light" href="https://bookdown.org/yihui/bookdown/">bookdown</a> R package, styled with the modern bs4_book format.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+</body>
+</html>

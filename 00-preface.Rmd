@@ -1,0 +1,6 @@
+# Sources of reads
+Microbiome read sequencing data may be obtained from different sources. The most common ones include:
+
+1. Reads obtained directly from a sequencing platforms by investigators.
+2. Reads downloaded from the Sequence Read Archive (SRA) or the European Nucleotide Archive (ENA).
+3. Reads synthesized using sequencing simulators.
