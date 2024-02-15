@@ -1,4 +1,4 @@
-book_filename: "sra-data"
+book_filename: "sra-reads"
 new_session: true
 language:
   label: "en"
