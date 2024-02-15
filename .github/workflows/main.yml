@@ -26,7 +26,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v2
+        uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs  # Source directory for Jekyll
           destination: ./_site  # Destination directory for the build output
