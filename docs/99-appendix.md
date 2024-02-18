@@ -103,6 +103,10 @@ href="https://tmbuza.github.io/imap-snakemake-workflows/">In-progress</a></td>
 </table>
 </div>
 
+# Snakemake Rule Graph: IMAP-PART 03
+
+![](dags/rulegraph.svg)
+
 # Session Information
 
 Reproducibility relies on the ability to precisely recreate the working environment, and session information serves as a vital reference to achieve this consistency. Here we record details about the R environment, package versions, and system settings of the computing environment at the time of analysis. 

@@ -1,0 +1,87 @@
+Project Tree
+.
+├── 00-preface.Rmd
+├── 01-get-sratoolkit.Rmd
+├── 02-download-sequences.Rmd
+├── 03-resizing-fastq.Rmd
+├── 99-appendix.Rmd
+├── 999-references.Rmd
+├── LICENSE
+├── README.md
+├── _bookdown.yml
+├── _common.R
+├── _main.Rmd
+├── _output.yml
+├── bs4_template.html
+├── config
+│   ├── acc.txt
+│   ├── config.yml
+│   ├── pe_samples.tsv
+│   ├── pe_units.tsv
+│   ├── se_samples.tsv
+│   ├── se_units.tsv
+│   └── sra_accs.txt
+├── data
+│   ├── reads
+│   ├── reads_
+│   └── temp
+├── docs
+│   ├── 00-preface.md
+│   ├── 01-get-sratoolkit.md
+│   ├── 02-download-sequences.md
+│   ├── 03-resizing-fastq.md
+│   ├── 404.html
+│   ├── 99-appendix.md
+│   ├── 999-references.md
+│   ├── 9999-footer.md
+│   ├── dags
+│   ├── downloading-multiple-fastq-files.html
+│   ├── env_spec_file.txt
+│   ├── images
+│   ├── imap-github-repos.html
+│   ├── index.html
+│   ├── index.md
+│   ├── installing-sra-toolkit.html
+│   ├── libs
+│   ├── reference-keys.txt
+│   ├── references.html
+│   ├── search.json
+│   ├── session-information.html
+│   ├── snakemake-rule-graph-imap-part-03.html
+│   ├── sources-of-reads.html
+│   └── style.css
+├── images
+│   ├── cicd.png
+│   └── sra.png
+├── index.Rmd
+├── library
+│   ├── apa.csl
+│   ├── imap.bib
+│   ├── packages.bib
+│   └── references.bib
+├── output
+├── renv
+│   ├── activate.R
+│   ├── library
+│   └── staging
+├── renv.lock
+├── reports
+│   └── project_tree.txt
+├── resources
+│   ├── metadata
+│   └── session_info.txt
+├── results
+│   └── project_tree.txt
+├── sra-data.rds
+├── sra-reads.rds
+├── style.css
+├── test
+└── workflow
+    ├── Snakefile
+    ├── envs
+    ├── report
+    ├── rules
+    ├── schemas
+    └── scripts
+
+27 directories, 57 files

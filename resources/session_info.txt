@@ -1,4 +1,4 @@
-─ Session info ─────────────────────────────────────────────────────────────────────────────────────────────────
+─ Session info ──────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.3.2 (2023-10-31)
  os       macOS Sonoma 14.2.1
@@ -8,10 +8,10 @@
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Africa/Dar_es_Salaam
- date     2024-02-15
+ date     2024-02-18
  pandoc   3.1.3 @ /Users/tmbmacbookair/miniforge3/envs/microbiome_env/bin/ (via rmarkdown)
 
-─ Packages ─────────────────────────────────────────────────────────────────────────────────────────────────────
+─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────
  ! package     * version date (UTC) lib source
  P bookdown      0.37    2023-12-01 [?] CRAN (R 4.3.2)
  P bslib         0.6.1   2023-11-28 [?] CRAN (R 4.3.2)
@@ -39,9 +39,9 @@
  P xml2          1.3.6   2023-12-04 [?] CRAN (R 4.3.2)
  P yaml          2.3.8   2023-12-11 [?] CRAN (R 4.3.2)
 
- [1] /Users/tmbmacbookair/Dropbox/2024/TMB2024/imap-download-sra-reads/renv/library/R-4.3/aarch64-apple-darwin20.0.0
+ [1] /Users/tmbmacbookair/Dropbox/2024/TMB2024/COMPLETED/imap-download-sra-reads/renv/library/R-4.3/aarch64-apple-darwin20.0.0
  [2] /Users/tmbmacbookair/Library/Caches/org.R-project.R/R/renv/sandbox/R-4.3/aarch64-apple-darwin20.0.0/c637371f
 
  P ── Loaded and on-disk path mismatch.
 
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

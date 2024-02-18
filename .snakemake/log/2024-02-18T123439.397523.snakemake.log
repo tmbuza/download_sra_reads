@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+render_bs4_book        1
+total                  1
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Feb 18 12:34:39 2024]
+localrule render_bs4_book:
+    input: index.Rmd, dags/rulegraph.png, dags/rulegraph.svg, reports/project_tree.txt, reports/snakemake_report.html
+    output: docs/index.html
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/var/folders/m1/0dxpqygn2ds41kxkjgwtftr00000gn/T
+
+[Sun Feb 18 12:34:58 2024]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: .snakemake/log/2024-02-18T123439.397523.snakemake.log

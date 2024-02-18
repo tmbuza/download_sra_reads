@@ -1,75 +1,71 @@
 from snakemake.utils import min_version
 
-##### set minimum snakemake version #####
-min_version("6.4.1")
+min_version("6.10.0")
 
-
-##### setup report #####
+# Configuration file containing all user-specified settings
 configfile: "config/config.yml"
 
-# import os
-# import csv
-# import pandas as pd
 
-# METADATA = (
-#     pd.read_csv(config["samples"], sep="\t", dtype={"sample_name": str})
-#     .set_index("sample_name", drop=False)
-#     .sort_index()
-# )
-
-# SAMPLES = METADATA["sample_name"]
+# # Debug information
+# print("Configuration:")
+# print(config)
+# print("Bioprojects:")
+# print(bioprojects)
 
 
-# OUTDIR="data/reads" 
-# TEMPDIR="data/temp"
-
-# if not os.path.exists(OUTDIR):
-#    os.makedirs(OUTDIR)
-
-# if not os.path.exists(TEMPDIR):
-#    os.makedirs(TEMPDIR)
-
-
-report: "report/workflow.rst"
-
-
-##### setup singularity #####
-
-
-# this container defines the underlying OS for each job when using the workflow
-# with --use-conda --use-singularity
-# container: "docker://continuumio/miniconda3"
-
-
-##### load rules #####
-
-
-include: "rules/common.smk"
-include: "rules/import_metadata.smk"
-include: "rules/fasterq_dump_fastq.smk"
-include: "rules/pigz_compress_fastq.smk"
-include: "rules/extract_sra_accs.smk"
-# include: "rules/resize_fastq_files.smk"
-
-include: "rules/rmd_report.smk"
-
-
-# Master rule for controlling workflow.
-rule all:
+rule FINAL_TARGET:
     input:
-        "index.html",
-        # "config/pe_samples.tsv",
-        # "config/pe_units.tsv",
-        # "resources/metadata/pe_metadata.tsv",
-        # "config/se_samples.tsv",
-        # "config/se_units.tsv",
-        # "resources/metadata/se_metadata.tsv",
-
-        # "config/sra_accs.txt",
-
-        expand("{outdir}/{sample}_{sraNum}.fastq", outdir=OUTDIR, sample=SAMPLES, sraNum=config["sraNum"]),
-        expand("{outdir}/{sample}_{sraNum}.fastq.gz", outdir=OUTDIR, sample=SAMPLES, sraNum=config["sraNum"]),
+        "docs/index.html"
+        # "dags/rulegraph.png",
+        # "dags/rulegraph.svg",
+        # "reports/project_tree.txt",
+        # "reports/snakemake_report.html"
+  
 
 
+# Rule to generate the rule graph and create the dags folder if it doesn't exist
+rule generate_rulegraph:
+    output:
+        directory("dags"),
+        "dags/rulegraph.png",
+        "dags/rulegraph.svg",
 
+    shell:
+        """
+        snakemake --unlock;
+        mkdir -p {output[0]};
+        snakemake --rulegraph | dot -Tpng > {output[1]};
+        snakemake --rulegraph | dot -Tsvg > {output[2]};
+        """
 
+# Rule to generate a directory tree
+rule generate_tree:
+    output:
+        directory("output"),
+        "reports/project_tree.txt"
+    shell:
+        """
+        snakemake --unlock \
+        && mkdir -p {output[0]} \
+        && echo "Project Tree" > {output[1]} \
+        && tree -L 2 . >> {output[1]}
+        """
+
+# Rule to generate SnakeMake report
+rule snakemake_report:
+    output:
+        "reports/snakemake_report.html"
+    shell:
+        "snakemake --keep-going --use-conda --report {output[0]}"
+
+rule render_bs4_book:
+    input:
+        "index.Rmd",
+        "dags/rulegraph.png",
+        "dags/rulegraph.svg",
+        "reports/project_tree.txt",
+        "reports/snakemake_report.html" 
+    output:
+        "docs/index.html"
+    shell:
+        "R -e 'bookdown::render_book(input = \"index.Rmd\", output_format = \"bookdown::bs4_book\", output_dir = \"docs\")'"

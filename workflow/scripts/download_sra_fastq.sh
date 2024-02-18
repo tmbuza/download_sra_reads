@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# METADATA="data/metadata/metadata.csv"
+# METADATA="data/metadata.csv"
 
 # OUTDIR="data/reads" 
 # TEMPDIR="data/temp"

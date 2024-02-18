@@ -1,0 +1,66 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+all                       1
+generate_rulegraph        1
+generate_tree             1
+snakemake_report          1
+total                     4
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Feb 17 09:53:29 2024]
+localrule generate_tree:
+    output: output, reports/project_tree.txt
+    jobid: 2
+    reason: Missing output files: reports/project_tree.txt
+    resources: tmpdir=/var/folders/m1/0dxpqygn2ds41kxkjgwtftr00000gn/T
+
+[Sat Feb 17 09:53:30 2024]
+Finished job 2.
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Feb 17 09:53:30 2024]
+localrule generate_rulegraph:
+    output: dags, dags/rulegraph.png, dags/rulegraph.svg
+    jobid: 1
+    reason: Missing output files: dags/rulegraph.png, dags/rulegraph.svg
+    resources: tmpdir=/var/folders/m1/0dxpqygn2ds41kxkjgwtftr00000gn/T
+
+[Sat Feb 17 09:53:31 2024]
+Finished job 1.
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Feb 17 09:53:31 2024]
+localrule snakemake_report:
+    output: reports/snakemake_report.html
+    jobid: 3
+    reason: Missing output files: reports/snakemake_report.html
+    resources: tmpdir=/var/folders/m1/0dxpqygn2ds41kxkjgwtftr00000gn/T
+
+[Sat Feb 17 09:53:40 2024]
+Finished job 3.
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Feb 17 09:53:40 2024]
+localrule all:
+    input: dags/rulegraph.png, dags/rulegraph.svg, reports/project_tree.txt, reports/snakemake_report.html
+    jobid: 0
+    reason: Input files updated by another job: reports/snakemake_report.html, dags/rulegraph.svg, reports/project_tree.txt, dags/rulegraph.png
+    resources: tmpdir=/var/folders/m1/0dxpqygn2ds41kxkjgwtftr00000gn/T
+
+[Sat Feb 17 09:53:40 2024]
+Finished job 0.
+4 of 4 steps (100%) done
+Complete log: .snakemake/log/2024-02-17T095329.801262.snakemake.log

@@ -1,8 +1,9 @@
-sources-of-reads
+a-practical-experience-with-sra-fastq-sequences-sra-fastq
 installing-sra-toolkit
 create-a-cache-root-directory
 confirm-sra-toolkit-configuration
 alternative-method
 downloading-multiple-fastq-files
 imap-github-repos
+snakemake-rule-graph-imap-part-03
 session-information
