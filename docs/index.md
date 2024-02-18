@@ -17,10 +17,10 @@ citation_package:
   - natbib
   - biblatex
   - amsplain
-url: https://tmbuza.github.io/imap-project-overview/
+url: https://tmbuza.github.io/imap-download-sra-reads/
 cover-image: images/planning.png
 email_address: "ndelly@gmail.com"
-github-repo: tmbuza/imap-project-overview
+github-repo: tmbuza/imap-download-sra-reads
 biblio-style: apalike
 description: |
   | This part will be added before release.
