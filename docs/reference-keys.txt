@@ -1,4 +1,4 @@
-a-practical-experience-with-sra-fastq-sequences-sra-fastq
+sra-fastq-sequences
 installing-sra-toolkit
 create-a-cache-root-directory
 confirm-sra-toolkit-configuration

@@ -1,15 +1,7 @@
-# A Practical Experience with SRA Fastq Sequences {sra-fastq}
 
-Welcome to the third installment of the IMAP Practical User Guides. In this section, we present a hands-on demo session focusing on "Downloading Microbiome Fastq Sequences from SRA Database." As we embark on this chapter, we assume that users or learners have already deposited their data, encompassing both sequences and metadata, in the SRA—an integral centralized repository for microbiome studies.
+# Exploring Practical Applications: Retrieving Microbiome Fastq Sequences from the SRA Database {#sra-fastq-sequences}
+Welcome to IMAP Practical User Guides, Part 03. In this segment, we offer a hands-on demonstration focused on the proficient acquisition of "Microbiome Fastq Sequences from the Sequence Read Archive (SRA) Database." As we delve into this chapter, it is presumed that you harbor a sincere interest in mastering the intricacies of downloading fastq sequences from the SRA database—a pivotal centralized repository housing short reads from Next-Generation Sequencing (NGS) platforms.
 
-Sequencing data sourced from the SRA not only provides invaluable sequences but also upholds a standardized approach to metadata reporting. Throughout this demo, our objective is to facilitate a uniform method of retrieving data, promoting consistency in subsequent analyses.
+Acknowledging that microbiome read sequencing data can be procured from diverse sources, including direct acquisition from sequencing platforms by researchers, downloads from the Sequence Read Archive (SRA) or the European Nucleotide Archive (ENA), and synthesis through sequencing simulators, our emphasis in this tutorial is on the standardized approach provided by the SRA. This approach ensures a consistent reporting of associated metadata, as expounded upon in the IMAP Part 02 section.
 
-This hands-on tutorial is meticulously crafted to guide you through the essential steps of accessing and acquiring raw sequencing data. It empowers you to seamlessly integrate SRA data into your microbiome research endeavors, whether you are a seasoned researcher or new to the realm of bioinformatics. This preface sets the stage for a comprehensive understanding of the demo, ensuring a smooth exploration of this critical stage in the IMAP journey.
-
-Microbiome read sequencing data may be obtained from various sources, including:
-
-* Reads obtained directly from sequencing platforms by investigators.
-* Reads downloaded from the Sequence Read Archive (SRA) or the European Nucleotide Archive (ENA).
-* Reads synthesized using sequencing simulators.
-
-We chose SRA for demo purpose.
+Throughout this demonstrative session, our objective is to systematically guide you through the process of retrieving microbiome sequencing data from the SRA, promoting a uniform methodology. By adhering to this standardized approach, we aim to enhance consistency in subsequent bioinformatics analyses.
