@@ -47,7 +47,7 @@ description: |
 
 <br>
 <br>
-![Book cover](images/sra.png){width=50%}
+![](images/sra.png){width=50%}
 <br>
 <br>
 
