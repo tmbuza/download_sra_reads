@@ -5,5 +5,5 @@ confirm-sra-toolkit-configuration
 alternative-method
 downloading-multiple-fastq-files
 imap-github-repos
-snakemake-rule-graph-imap-part-03
+download-sra-fastq-rulegraph
 session-information

@@ -1,5 +1,5 @@
-
-# Retrieving Microbiome Fastq Sequences from the SRA Database {#sra-fastq-sequences}
+# (PART) SRA FASTQ SEQUENCES {-}
+# Retrieving Fastq Sequences from SRA Database {#sra-fastq-sequences}
 Welcome to IMAP Practical User Guides, Part 03. In this segment, we offer a hands-on demonstration focused on the proficient acquisition of "Microbiome Fastq Sequences from the Sequence Read Archive (SRA) Database." As we delve into this chapter, it is presumed that you harbor a sincere interest in mastering the intricacies of downloading fastq sequences from the SRA database—a pivotal centralized repository housing short reads from Next-Generation Sequencing (NGS) platforms.
 
 Acknowledging that microbiome read sequencing data can be procured from diverse sources, including direct acquisition from sequencing platforms by researchers, downloads from the Sequence Read Archive (SRA) or the European Nucleotide Archive (ENA), and synthesis through sequencing simulators, our emphasis in this tutorial is on the standardized approach provided by the SRA. This approach ensures a consistent reporting of associated metadata, as expounded upon in the IMAP Part 02 section.

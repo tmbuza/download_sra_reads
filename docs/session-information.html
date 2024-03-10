@@ -51,12 +51,13 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">IMAP-Part 03: Downloading Microbiome Fastq Sequences from NCBI Database</a></li>
-<li><a class="" href="sra-fastq-sequences.html"><span class="header-section-number">1</span> Retrieving Microbiome Fastq Sequences from the SRA Database</a></li>
+<li class="book-part">SRA FASTQ SEQUENCES</li>
+<li><a class="" href="sra-fastq-sequences.html"><span class="header-section-number">1</span> Retrieving Fastq Sequences from SRA Database</a></li>
 <li><a class="" href="installing-sra-toolkit.html"><span class="header-section-number">2</span> Installing SRA Toolkit</a></li>
 <li><a class="" href="downloading-multiple-fastq-files.html"><span class="header-section-number">3</span> Downloading multiple fastq files</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
-<li><a class="" href="snakemake-rule-graph-imap-part-03.html"><span class="header-section-number">B</span> Snakemake Rule Graph: IMAP-PART 03</a></li>
+<li><a class="" href="download-sra-fastq-rulegraph.html"><span class="header-section-number">B</span> Download SRA Fastq Rulegraph</a></li>
 <li><a class="active" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -72,26 +73,20 @@
 </h1>
 <p>Reproducibility relies on the ability to precisely recreate the working environment, and session information serves as a vital reference to achieve this consistency. Here we record details about the R environment, package versions, and system settings of the computing environment at the time of analysis.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/sessioninfo#readme">sessioninfo</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/sessioninfo#readme">sessioninfo</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Get session info</span></span>
 <span><span class="va">info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html">session_info</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create the 'resources' folder if it doesn't exist</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="st">"resources"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"resources"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<span><span class="co"># Exclude lines containing specific information (e.g., pandoc and library path)</span></span>
+<span><span class="va">info_filtered</span> <span class="op">&lt;-</span> <span class="va">info</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"pandoc|/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/|/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library|*/Users/*"</span>, <span class="va">info</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
-<span><span class="co"># Save the session information to a text file without line numbers</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">info</span>, file <span class="op">=</span> <span class="st">"session_info.txt"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<blockquote>
-<p>For a detailed overview of the tools and versions suitable for this guide, I encourage you to explore the session information saved in the accompanying text file named <code>session_info.txt</code>,</p>
-</blockquote>
+<span><span class="co"># Save the filtered session info to a text file in the root directory without line numbers</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">info_filtered</span>, file <span class="op">=</span> <span class="st">"session_info.txt"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="snakemake-rule-graph-imap-part-03.html"><span class="header-section-number">B</span> Snakemake Rule Graph: IMAP-PART 03</a></div>
+<div class="prev"><a href="download-sra-fastq-rulegraph.html"><span class="header-section-number">B</span> Download SRA Fastq Rulegraph</a></div>
 <div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -113,7 +108,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-02-18</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-03-10</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">
