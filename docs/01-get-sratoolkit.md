@@ -1,12 +1,14 @@
 # Installing SRA Toolkit
-- Navigate to where you want to install the tools, preferably the home directory.
-- For more information click [here](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit).
 
-Demo on MAC OS
+## Navigate to Installation Directory
+
+Navigate to the directory where you want to install the tools, preferably the home directory. To install the SRA Toolkit, follow these steps:
+
 ```bash
-curl -LO  https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-mac64.tar.gz
+curl -LO https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-mac64.tar.gz
 tar -xf sratoolkit.3.0.0-mac64.tar.gz
 export PATH=$HOME/sratoolkit.3.0.0-mac64/bin/:$PATH
+
 ```
 
 ## Create a cache root directory
@@ -22,6 +24,7 @@ echo '/repository/user/main/public/root = "cache_directory"' > ~/ncbi/user-setti
 
 ```bash
 vdb-config -i
+
 ```
 
 ![A screenshot of the SRA configuration.](images/sra_config_cache.png)
@@ -31,10 +34,11 @@ vdb-config -i
 For more information click [here](https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration).
 
 
-## Alternative method
-We can create an environment and install essential tools in it. Example, `sradb` using `environment.yml`.
+## Alternative Method
 
-```bash
+You can create an environment and install essential tools in it. For example, you can create an environment named `sradb` using an `environment.yml` file:
+
+```yaml
 name: sradb
 channels:
   - conda-forge
@@ -44,6 +48,7 @@ dependencies:
   - entrez-direct
   - pysradb
 ```
+
 
 ```bash
 mamba create -c bioconda -c conda-forge sradb -file environment.yml

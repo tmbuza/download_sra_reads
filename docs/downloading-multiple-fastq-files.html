@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>3 Downloading multiple fastq files | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<title>3 Downloading Multiple Fastq Files | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
-<meta name="description" content="Make sure that the fasterq-dump is in the path. Type which fasterq-dump or fasterq-dump --help to confirm. Must specify the output and temporary files. It is possible to specifies a range of SRA...">
+<meta name="description" content="To download multiple fastq files, follow these steps:  3.1 Confirm fasterq-dump Installation Ensure that fasterq-dump is in the path. You can type which fasterq-dump or fasterq-dump --help in the...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="3 Downloading multiple fastq files | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:title" content="3 Downloading Multiple Fastq Files | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tmbuza.github.io/imap-download-sra-reads/downloading-multiple-fastq-files.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-download-sra-reads/images/planning.png">
-<meta property="og:description" content="Make sure that the fasterq-dump is in the path. Type which fasterq-dump or fasterq-dump --help to confirm. Must specify the output and temporary files. It is possible to specifies a range of SRA...">
+<meta property="og:description" content="To download multiple fastq files, follow these steps:  3.1 Confirm fasterq-dump Installation Ensure that fasterq-dump is in the path. You can type which fasterq-dump or fasterq-dump --help in the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3 Downloading multiple fastq files | IMAP: Integrated Microbiome Analysis Pipelines">
-<meta name="twitter:description" content="Make sure that the fasterq-dump is in the path. Type which fasterq-dump or fasterq-dump --help to confirm. Must specify the output and temporary files. It is possible to specifies a range of SRA...">
+<meta name="twitter:title" content="3 Downloading Multiple Fastq Files | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:description" content="To download multiple fastq files, follow these steps:  3.1 Confirm fasterq-dump Installation Ensure that fasterq-dump is in the path. You can type which fasterq-dump or fasterq-dump --help in the...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-download-sra-reads/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,8 @@
 <li class="book-part">SRA FASTQ SEQUENCES</li>
 <li><a class="" href="sra-fastq-sequences.html"><span class="header-section-number">1</span> Retrieving Fastq Sequences from SRA Database</a></li>
 <li><a class="" href="installing-sra-toolkit.html"><span class="header-section-number">2</span> Installing SRA Toolkit</a></li>
-<li><a class="active" href="downloading-multiple-fastq-files.html"><span class="header-section-number">3</span> Downloading multiple fastq files</a></li>
+<li><a class="active" href="downloading-multiple-fastq-files.html"><span class="header-section-number">3</span> Downloading Multiple Fastq Files</a></li>
+<li><a class="" href="resizing-fastq-files.html"><span class="header-section-number">4</span> Resizing Fastq Files</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="download-sra-fastq-rulegraph.html"><span class="header-section-number">B</span> Download SRA Fastq Rulegraph</a></li>
@@ -69,15 +70,26 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="downloading-multiple-fastq-files" class="section level1" number="3">
 <h1>
-<span class="header-section-number">3</span> Downloading multiple fastq files<a class="anchor" aria-label="anchor" href="#downloading-multiple-fastq-files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> Downloading Multiple Fastq Files<a class="anchor" aria-label="anchor" href="#downloading-multiple-fastq-files"><i class="fas fa-link"></i></a>
 </h1>
-<ul>
-<li>Make sure that the <code>fasterq-dump</code> is in the path.</li>
-<li>Type <code>which fasterq-dump</code> or <code>fasterq-dump --help</code> to confirm.</li>
-<li>Must specify the output and temporary files.</li>
-<li>It is possible to specifies a range of SRA accessions in a <code>for loop</code>.</li>
-</ul>
-<p>Example code for downloading reads from the NCBI-SRA for accessions ranging from SRR7450706 to SRR7450761.</p>
+<p>To download multiple fastq files, follow these steps:</p>
+<div id="confirm-fasterq-dump-installation" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Confirm <code>fasterq-dump</code> Installation<a class="anchor" aria-label="anchor" href="#confirm-fasterq-dump-installation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ensure that <code>fasterq-dump</code> is in the path. You can type <code>which fasterq-dump</code> or <code>fasterq-dump --help</code> in the terminal to confirm its presence.</p>
+</div>
+<div id="specify-output-and-temporary-files" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Specify Output and Temporary Files<a class="anchor" aria-label="anchor" href="#specify-output-and-temporary-files"><i class="fas fa-link"></i></a>
+</h2>
+<p>When using <code>fasterq-dump</code>, you must specify the output directory (<code>--outdir</code>) and temporary directory (<code>--temp</code>).</p>
+</div>
+<div id="download-in-a-loop" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Download in a Loop<a class="anchor" aria-label="anchor" href="#download-in-a-loop"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can use a <code>for loop</code> to specify a range of SRA accessions and download them sequentially. Here’s an example code for downloading reads from the NCBI-SRA for accessions ranging from SRR7450706 to SRR7450761:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="downloading-multiple-fastq-files.html#cb6-1" tabindex="-1"></a><span class="cf">for</span> <span class="kw">((</span> <span class="va">i</span> <span class="op">=</span> <span class="dv">706</span><span class="kw">;</span> <span class="va">i</span> <span class="op">&lt;=</span> <span class="dv">761</span><span class="kw">;</span> <span class="va">i</span><span class="op">++</span> <span class="kw">))</span></span>
 <span id="cb6-2"><a href="downloading-multiple-fastq-files.html#cb6-2" tabindex="-1"></a>    <span class="cf">do</span></span>
 <span id="cb6-3"><a href="downloading-multiple-fastq-files.html#cb6-3" tabindex="-1"></a>        <span class="bu">time</span> fasterq-dump SRR7450<span class="va">$i</span> <span class="dt">\</span></span>
@@ -87,46 +99,26 @@
 <span id="cb6-7"><a href="downloading-multiple-fastq-files.html#cb6-7" tabindex="-1"></a>        <span class="at">--outdir</span> data/reads <span class="dt">\</span></span>
 <span id="cb6-8"><a href="downloading-multiple-fastq-files.html#cb6-8" tabindex="-1"></a>        <span class="at">--temp</span> data/temp <span class="dt">\</span></span>
 <span id="cb6-9"><a href="downloading-multiple-fastq-files.html#cb6-9" tabindex="-1"></a>        <span class="at">--threads</span> 4     </span>
-<span id="cb6-10"><a href="downloading-multiple-fastq-files.html#cb6-10" tabindex="-1"></a>    <span class="cf">done</span></span>
-<span id="cb6-11"><a href="downloading-multiple-fastq-files.html#cb6-11" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="downloading-multiple-fastq-files.html#cb6-12" tabindex="-1"></a><span class="op">&lt;</span>!--chapter:end:02-download-sequences.Rmd--<span class="op">&gt;</span></span>
-<span id="cb6-13"><a href="downloading-multiple-fastq-files.html#cb6-13" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="downloading-multiple-fastq-files.html#cb6-14" tabindex="-1"></a><span class="co"># Resizing Fastq files</span></span>
-<span id="cb6-15"><a href="downloading-multiple-fastq-files.html#cb6-15" tabindex="-1"></a>  <span class="ex">-</span> Sometimes we want to extract a small subset to test the bioinformatics pipeline.</span>
-<span id="cb6-16"><a href="downloading-multiple-fastq-files.html#cb6-16" tabindex="-1"></a>  <span class="ex">-</span> You can resize the fastq files using the <span class="kw">`</span><span class="ex">seqkit</span> sample<span class="kw">`</span> function <span class="pp">[</span><span class="ss">@seqkit2022</span><span class="pp">]</span>.</span>
-<span id="cb6-17"><a href="downloading-multiple-fastq-files.html#cb6-17" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="downloading-multiple-fastq-files.html#cb6-18" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="downloading-multiple-fastq-files.html#cb6-19" tabindex="-1"></a><span class="ex">Example</span> extracting only 1% of the paired-end metagenomics sequencing data.</span>
-<span id="cb6-20"><a href="downloading-multiple-fastq-files.html#cb6-20" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="downloading-multiple-fastq-files.html#cb6-21" tabindex="-1"></a><span class="op">&gt;</span> This <span class="fu">bash</span> script extracts 1% of the reads from only two sample <span class="er">(</span><span class="ex">SRR10245277</span> to SRR10245280<span class="kw">)</span></span>
-<span id="cb6-22"><a href="downloading-multiple-fastq-files.html#cb6-22" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="downloading-multiple-fastq-files.html#cb6-23" tabindex="-1"></a><span class="kw">```</span><span class="fu">bash</span></span>
-<span id="cb6-24"><a href="downloading-multiple-fastq-files.html#cb6-24" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> data</span>
-<span id="cb6-25"><a href="downloading-multiple-fastq-files.html#cb6-25" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">77</span><span class="dt">..</span><span class="dv">80</span><span class="dt">}</span></span>
-<span id="cb6-26"><a href="downloading-multiple-fastq-files.html#cb6-26" tabindex="-1"></a>  <span class="cf">do</span></span>
-<span id="cb6-27"><a href="downloading-multiple-fastq-files.html#cb6-27" tabindex="-1"></a>    <span class="fu">cat</span> SRR102452<span class="va">$i</span><span class="dt">\_</span>1.fastq <span class="dt">\</span></span>
-<span id="cb6-28"><a href="downloading-multiple-fastq-files.html#cb6-28" tabindex="-1"></a>    <span class="kw">|</span> <span class="ex">seqkit</span> sample <span class="at">-p</span> 0.01 <span class="dt">\</span></span>
-<span id="cb6-29"><a href="downloading-multiple-fastq-files.html#cb6-29" tabindex="-1"></a>    <span class="kw">|</span> <span class="ex">seqkit</span> shuffle <span class="at">-o</span> data/SRR102452<span class="va">$i</span><span class="dt">\_</span>1_sub.fastq <span class="dt">\</span></span>
-<span id="cb6-30"><a href="downloading-multiple-fastq-files.html#cb6-30" tabindex="-1"></a>    <span class="kw">|</span> <span class="fu">cat</span> SRR102452<span class="va">$i</span><span class="dt">\_</span>2.fastq <span class="dt">\</span></span>
-<span id="cb6-31"><a href="downloading-multiple-fastq-files.html#cb6-31" tabindex="-1"></a>    <span class="kw">|</span> <span class="ex">seqkit</span> sample <span class="at">-p</span> 0.01 <span class="dt">\</span></span>
-<span id="cb6-32"><a href="downloading-multiple-fastq-files.html#cb6-32" tabindex="-1"></a>    <span class="kw">|</span> <span class="ex">seqkit</span> shuffle <span class="at">-o</span> data/SRR102452<span class="va">$i</span><span class="dt">\_</span>2_sub.fastq</span>
-<span id="cb6-33"><a href="downloading-multiple-fastq-files.html#cb6-33" tabindex="-1"></a>  <span class="cf">done</span></span></code></pre></div>
+<span id="cb6-10"><a href="downloading-multiple-fastq-files.html#cb6-10" tabindex="-1"></a>    <span class="cf">done</span></span></code></pre></div>
 
 </div>
-
-
-
+</div>
   <div class="chapter-nav">
 <div class="prev"><a href="installing-sra-toolkit.html"><span class="header-section-number">2</span> Installing SRA Toolkit</a></div>
-<div class="next"><a href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></div>
+<div class="next"><a href="resizing-fastq-files.html"><span class="header-section-number">4</span> Resizing Fastq Files</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#downloading-multiple-fastq-files"><span class="header-section-number">3</span> Downloading multiple fastq files</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#downloading-multiple-fastq-files"><span class="header-section-number">3</span> Downloading Multiple Fastq Files</a></li>
+<li><a class="nav-link" href="#confirm-fasterq-dump-installation"><span class="header-section-number">3.1</span> Confirm fasterq-dump Installation</a></li>
+<li><a class="nav-link" href="#specify-output-and-temporary-files"><span class="header-section-number">3.2</span> Specify Output and Temporary Files</a></li>
+<li><a class="nav-link" href="#download-in-a-loop"><span class="header-section-number">3.3</span> Download in a Loop</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/tmbuza/imap-download-sra-reads.git/blob/gh-pages/03-resizing-fastq.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/tmbuza/imap-download-sra-reads.git/edit/gh-pages/03-resizing-fastq.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+<li><a id="book-source" href="https://github.com/tmbuza/imap-download-sra-reads.git/blob/gh-pages/02-download-sequences.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-download-sra-reads.git/edit/gh-pages/02-download-sequences.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -139,7 +131,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-03-10</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-03-18</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">
