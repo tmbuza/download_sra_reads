@@ -31,7 +31,7 @@ library(tidyverse)
 knitr::write_bib(c(.packages(), 'base','bookdown', 'knitr','rmarkdown'), 'library/packages.bib')
 
 knitr::opts_chunk$set(
-  echo  =TRUE,
+  echo  =FALSE,
   message  =FALSE,
   warning  =FALSE,
   cache  =FALSE,
