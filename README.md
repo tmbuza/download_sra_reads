@@ -1,4 +1,4 @@
-# # IMAP: Downloading Fastq from SRA Database
+# IMAP PART 03: Downloading Fastq from the SRA Database
 
 Welcome to the "IMAP: Downloading Fastq from SRA Database" repository! This repository is part of the IMAP (Integrated Microbiome Analysis Pipeline) project, designed to facilitate microbiome data analysis.
 
