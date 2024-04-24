@@ -2,7 +2,7 @@
 title: "<big>IMAP:</big> Integrated Microbiome Analysis Pipelines"
 subtitle: "End-to-End Practical User Guides Using Integrated Approaches"
 date:
-- <b>2024-03-18</b>
+- <b>2024-04-24</b>
 author: Teresia Mrema-Buza
 site: bookdown::bookdown_site
 documentclass: book
@@ -51,7 +51,7 @@ description: |
 <br>
 <br>
 
-## Welcome Address {-}
+## Welcome to IMAP chapter 03: Guide to Downloading Microbiome Fastq Sequences {-}
 Welcome to IMAP Practical User Guides, Part 03. In this segment, we offer a hands-on demonstration focused on proficiently acquiring "Microbiome Fastq Sequences from the Sequence Read Archive (SRA) Database." Throughout this tutorial, we will guide you through the standardized approach provided by the SRA, ensuring a consistent reporting of associated metadata, as expounded upon in the IMAP Part 02 section.
 
 ## Embarking on Microbiome Bioinformatics {-}
