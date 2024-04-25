@@ -17,5 +17,4 @@ purpose
 using-seqkit-sample
 example
 imap-github-repos
-download-sra-fastq-rulegraph
 session-information
